@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Trading Mentor </title>
+    <title> Digital Dalal street </title>
     <!-- <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/> -->
     <link rel="stylesheet" href="../../static/app/css/style.css"/>
 
@@ -38,66 +38,93 @@
     <body>
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
-        <div class="header">
-        <div class="containers">
-         <div class="navbar">
-        <div class="logo">
-            <a href="/"><img src="../../static/app/images/product/logo.png" width="125px"></a>
-             </div>
+        <div class="bg-blue-200">
+            
+            <header class="py-4 shadow-sm bg-white">
+                <div class="container flex items-center justify-between">
+                    <div class="flex flex-row">
+                        <a href="index.html" >
+                            <img src="../../static/app/images/product/smlogo.png" alt="Logo" class="w-10 h-auto">
+                            
+                        </a>
+                        <p class="ml-3 text-blue-700 font-bold text-xl flex items-center justify-center">
+                            Digital Dalal Street
+                        </p>
 
-             
-        <form class="flex items-center">   
-            <label for="simple-search" class="sr-only">Search</label>
-            <div class="relative w-full">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
-                    </svg>
-                </div>
-                <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 py-5 px-20" placeholder="Search branch name..." required>
-            </div>
-            <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                </svg>
-                <span class="sr-only">Search</span>
-            </button>
-        </form>
-
-             <nav>
-                 <ul id="MenuItems">
-                 <li><a href="/">Home</a></li>
-                 <li class="dropdown">
-                    <a href="#" class="dropbtn" onclick="menutoggle()">Products <i class="fa fa-caret-down"></i></a>
-                    <div class="dropdown-content" id="productsDropdown">
-                        <a href="/item">Books</a>
-                        <a href="#">Accessories</a>
-                        <a href="#">Merchandise</a>
-                        <a href="#">Stationery Items</a>
                     </div>
+                   
+                   
+        
+                    <div class="w-full max-w-xl relative flex">
+                        <span class="absolute left-4 top-3 text-lg text-gray-400">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" name="search" id="search"
+                            class="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
+                            placeholder="search">
+                        <button
+                            class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
+                    </div>
+        
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+                            <div class="text-2xl">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="text-xs leading-3">Wishlist</div>
+                        
+                        </a>
+                        <a href="{% url 'cart' %}" class="text-center text-gray-700 hover:text-primary transition relative">
+                            <div class="text-2xl">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <div class="text-xs leading-3">Cart</div>
+                            <div
+                            div id="cartAmount" class=" cartAmount">
+                                2</div>
+                        </a>
+                
 
-                    </li>
-     
-                 <li><a href="">About</a></li>
-                 <li><a href="">Contact</a></li>
-                 <li><a href="{% url 'account' %}">Account</a></li>
 
-                 
-                 </ul>
-             </nav>
-             <a href="{% url 'cart' %}">
-                <div class="cart">
-                <i class="bi bi-cart2"></i>
-                <div id="cartAmount" class="cartAmount">0</div>
+
+
+
+                        <a href="{% url 'account' %}" class="text-center text-gray-700 hover:text-primary transition relative">
+                            <div class="text-2xl">
+                                <i class="fa-regular fa-user"></i>  
+                            </div>
+                            <div class="text-xs leading-3">Account</div>
+                        </a>
+                    </div>
                 </div>
-              </a>
-             <img src="../../static/app/images/product/menu.png" class="menu-icon" onclick="menutoggle()">
-        </div>
+            </header>    
+            
+            <nav class="flex items-center justify-start bg-blue-800 text-white">
+                <ul class="flex space-x-4">
+                    <li><a href="/" class=" hover:underline">Home</a></li>
+                    <li class="relative group">
+                        <a href="#" class=" hover:underline" onclick="menutoggle()">Products <i class="fa fa-caret-down"></i></a>
+                        <div class="absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-lg group-hover:block">
+                            <a href="/item" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+                        </div>
+                    </li>
+                    <li><a href="#" class=" hover:underline">About</a></li>
+                    <li><a href="#" class=" hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+            
+
+            
+        <div class="containers bg-blue-100 pt-14">
             <div class="row" style="padding-left: 82px;">
                 <div class="col-2">
                 <h1>Bringing a new revolution<br></h1>
                     <p>Start where you are. Use what you have. Do what you can.</p>
-                    <a href="products.html" class="btn">Explore Now &#8594;</a>
+                    <a href="products.html" class="btn bg-blue-700 text-white">Explore Now &#8594;</a>
                 </div>
                 <div class="col-2" style="margin-bottom: 61px;"> 
                     <img src="{% static 'app/images/banner/bull.jpg' %}">
