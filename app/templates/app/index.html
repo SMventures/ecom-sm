@@ -1,29 +1,83 @@
 <!DOCTYPE html>
-{% load static %}
+<!-- {% load static %} -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Trading Mentor </title>
-    <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/>
+    <!-- <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/> -->
+    <link rel="stylesheet" href="../../static/app/css/style.css"/>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function menutoggle() {
+            var dropdown = document.getElementById("productsDropdown");
+            dropdown.classList.toggle("show");
+        }
 
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
 
 </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
         <div class="header">
         <div class="containers">
          <div class="navbar">
         <div class="logo">
-            <a href="index.html"><img src="{% static 'app/images/product/logo.png' %}" width="125px"></a>
+            <a href="/"><img src="../../static/app/images/product/logo.png" width="125px"></a>
              </div>
+
+             
+        <form class="flex items-center">   
+            <label for="simple-search" class="sr-only">Search</label>
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
+                    </svg>
+                </div>
+                <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 py-5 px-20" placeholder="Search branch name..." required>
+            </div>
+            <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+                <span class="sr-only">Search</span>
+            </button>
+        </form>
+
              <nav>
                  <ul id="MenuItems">
                  <li><a href="/">Home</a></li>
-                 <li><a href="{% url 'item' %}">Products</a></li>
+                 <li class="dropdown">
+                    <a href="#" class="dropbtn" onclick="menutoggle()">Products <i class="fa fa-caret-down"></i></a>
+                    <div class="dropdown-content" id="productsDropdown">
+                        <a href="/item">Books</a>
+                        <a href="#">Accessories</a>
+                        <a href="#">Merchandise</a>
+                        <a href="#">Stationery Items</a>
+                    </div>
+
+                    </li>
+     
                  <li><a href="">About</a></li>
                  <li><a href="">Contact</a></li>
                  <li><a href="{% url 'account' %}">Account</a></li>
@@ -37,7 +91,7 @@
                 <div id="cartAmount" class="cartAmount">0</div>
                 </div>
               </a>
-             <img src="{% static 'app/images/product/menu.png' %}" class="menu-icon" onclick="menutoggle()">
+             <img src="../../static/app/images/product/menu.png" class="menu-icon" onclick="menutoggle()">
         </div>
             <div class="row" style="padding-left: 82px;">
                 <div class="col-2">
@@ -46,7 +100,7 @@
                     <a href="products.html" class="btn">Explore Now &#8594;</a>
                 </div>
                 <div class="col-2" style="margin-bottom: 61px;"> 
-                    <img src="{% static 'app/images//banner/bull.jpg' %}">
+                    <img src="{% static 'app/images/banner/bull.jpg' %}">
                 </div>
             </div>
         </div>
@@ -354,19 +408,7 @@
             </div>
         </div>
         <!-------------------------------------js for toggle menu-------------------------------------->
-        <script>
-        var MenuItems = document.getElementById("MenuItems");
-            MenuItems.style.maxHeight = "0px";
-            function menutoggle(){
-                if(MenuItems.style.maxHeight == "0px"){
-                    MenuItems.style.maxHeight = "200px"
-                }
-                else{
-                   MenuItems.style.maxHeight = "0px" 
-                }
-            }
-        
-        </script>
+     
     </body>
     <script script="{% static 'app/js/owl.carousel.min.js' %}"></script>
     <script script="{% static 'app/js/all.min.js' %}"></script>
