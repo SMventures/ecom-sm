@@ -122,7 +122,6 @@
                 
             </nav>
             
-         
             <div class="carousel">
                 <div class="carousel-inner" id="carouselInner">
                   <div class="carousel-item">
@@ -167,31 +166,31 @@
             </div>
               
               
-              
             <script>
                 // JavaScript for automatic image change
                 const carouselInner = document.getElementById('carouselInner');
                 const totalImages = document.querySelectorAll('.carousel-item').length;
-
+                const transitionDuration = 5000; // Set the duration in milliseconds
+              
                 let currentIndex = 0;
-
+              
                 const showImage = (index) => {
-                 const offset = -index * 100;
-                 carouselInner.style.transform = `translateX(${offset}%)`;
+                  const offset = -index * 100;
+                  carouselInner.style.transform = `translateX(${offset}%)`;
                 };
-
-                 const nextImage = () => {
-                 currentIndex = (currentIndex + 1) % totalImages;
-                showImage(currentIndex);
-                 };
-
-                // Change image every 3 seconds (adjust as needed)
-                setInterval(nextImage, 5000);
-
+              
+                const nextImage = () => {
+                  currentIndex = (currentIndex + 1) % totalImages;
+                  showImage(currentIndex);
+                };
+              
+                // Change image every specified duration
+                setInterval(nextImage, transitionDuration);
+              
                 // Initial display
                 showImage(currentIndex);
-
               </script>
+              
          
 <!-- features -->
 <div class="container py-16">
@@ -229,7 +228,7 @@
         <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
         <div class="grid grid-cols-3 gap-3 ">
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../../static/app/images/product/image-1080x800 (39).jpg" alt="category 1" class="w-full">
+                <img src="../../static/app/images/product/mkt_wizards.jpg" alt="category 1" class="w-full">
                 <a href="{% url 'category' 'BK' %}"
                     class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Books</a>
             </div>
@@ -239,13 +238,13 @@
                     class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Merchandise</a>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../../static/app/images/product/image-1080x800 (20).jpg" alt="category 1" class="w-full">
+                <img src="../../static/app/images/product/bag1.jpg" alt="category 1" class="w-full">
                 <a href="{% url 'category' 'AR' %}"
                     class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Accessories
                 </a>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../../static/app/images/product/image-1080x800 (22).jpg" alt="category 1" class="w-full">
+                <img src="../../static/app/images/product/camera.jpg" alt="category 1" class="w-full">
                 <a href="{% url 'category' 'EC' %}"
                     class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Electronics</a>
             </div>
@@ -272,7 +271,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (34).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/keyboard.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -289,12 +288,12 @@
                 </div>
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">white phone cover
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">keyboard
                             </h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
-                        <p class="text-xl text-primary font-semibold">Rs 110</p>
-                        <p class="text-sm text-gray-400 line-through">Rs 140</p>
+                        <p class="text-xl text-primary font-semibold">Rs 1099</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 1199</p>
                     </div>
                     <div class="flex items-center">
                         <div class="flex gap-1 text-sm text-yellow-400">
@@ -341,8 +340,7 @@
                         <div class="flex gap-1 text-sm text-yellow-400">
                             <span><i class="fa-solid fa-star"></i></span>
                             <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-s
-                                <div class="carousel-item">tar"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
                             <span><i class="fa-solid fa-star"></i></span>
                             <span><i class="fa-solid fa-star"></i></span>
                         </div>
@@ -355,7 +353,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (27).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/mouse1.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -396,7 +394,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (19).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/bag2.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -443,7 +441,7 @@
             <!-- ads -->
     <div class="container pb-16">
         <a href="#">
-            <img src="../../static/app/images/banner/products.png" alt="ads" class="w-full">
+            <img src="../../static/app/images/product/products.png" alt="ads" class="w-full">
         </a>
     </div>
     <!-- ./ads -->
@@ -454,7 +452,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (2).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/blue_hoodie.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -471,7 +469,7 @@
                 </div>
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">White hoodie
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">blue hoodie
                             </h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
@@ -495,7 +493,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (11).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/white_tshirt.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -512,7 +510,7 @@
                 </div>
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">White tshirt
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">white tshirt
                        </h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
@@ -536,7 +534,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (23).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/pink_cover.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -554,7 +552,7 @@
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            STOCK MARKET BLACK PHONE COVER</h4>
+                            STOCK MARKET PINK PHONE COVER</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
                         <p class="text-xl text-primary font-semibold">Rs 110</p>
@@ -577,7 +575,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (52).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/stock_laptop.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -618,7 +616,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="=../../static/app/images/product/image-1080x800 (53).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/how_to_trade (2).jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -635,12 +633,12 @@
                 </div>
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Stock market wizard book
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Guide book
                             </h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
-                        <p class="text-xl text-primary font-semibold">Rs 250</p>
-                        <p class="text-sm text-gray-400 line-through">Rs 300</p>
+                        <p class="text-xl text-primary font-semibold">Rs 299</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 499</p>
                     </div>
                     <div class="flex items-center">
                         <div class="flex gap-1 text-sm text-yellow-400">
@@ -659,7 +657,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (24).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/white_cover.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -677,7 +675,7 @@
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            Black diary</h4>
+                            White phone cover</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
                         <p class="text-xl text-primary font-semibold">Rs 200</p>
@@ -700,7 +698,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (32).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/diary2.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -718,7 +716,7 @@
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            White stock tshirt</h4>
+                            black diary</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
                         <p class="text-xl text-primary font-semibold">Rs 350</p>
@@ -741,7 +739,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (31).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/women_whitetshirt.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -759,7 +757,7 @@
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            Pink phone cover</h4>
+                            white tshirt</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
                         <p class="text-xl text-primary font-semibold">Rs 120</p>
@@ -810,7 +808,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="bg-white shadow rounded overflow-hidden group">
                     <div class="relative">
-                        <img src="../../static/app/images/product/image-1080x800 (43).jpg" alt="product 1" class="w-full">
+                        <img src="../../static/app/images/product/investing_book.jpg" alt="product 1" class="w-full">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                         justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                             <a href="#"
@@ -827,7 +825,7 @@
                     </div>
                     <div class="pt-4 pb-3 px-4">
                         <a href="#">
-                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Currency trading and intermarket analysis
+                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">stock market investing for beginners
                                 </h4>
                         </a>
                         <div class="flex items-baseline mb-1 space-x-2">
@@ -851,7 +849,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (45).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/tech_analysis.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -886,13 +884,13 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                <a href="/add-to-cart"
+                 class="btn btn-primary text-white flex items-center justify-center rounded-full  bg-blue-700 px-5 py-2">Add
                     to cart</a>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/image-1080x800 (46).jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/currencytrading.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -909,7 +907,7 @@
                 </div>
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Trading in the zone
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Currency trading
                             </h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
@@ -934,7 +932,7 @@
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                     <div class="relative">
-                        <img src="../../static/app/images/product/image-1080x800 (47).jpg" alt="product 1" class="w-full">
+                        <img src="../../static/app/images/product/candlestick_guide.jpg" alt="product 1" class="w-full">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                         justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                             <a href="#"
