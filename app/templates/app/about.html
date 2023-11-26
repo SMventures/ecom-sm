@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!-- {% load static %} -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Digital Dalal street </title>
+    <!-- <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/> -->
+    <link rel="stylesheet" href="../../static/app/css/style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+    <body>
+        <script>
+            function toggleDropdown() {
+                var dropdown = document.getElementById("productsDropdown");
+                dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            }
+    
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdown = document.getElementById("productsDropdown");
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+        <div class="">
+            
+            <header class="py-4 shadow-sm bg-white">
+                <div class="container flex items-center justify-between">
+                    <div class="flex flex-row">
+                        <a href="index.html" >
+                            <img src="../../static/app/images/product/smlogo.png" alt="Logo" class="w-10 h-auto">
+                            
+                        </a>
+                        <p class="ml-3 text-blue-700 font-bold text-xl flex items-center justify-center">
+                            Digital Dalal Street
+                        </p>
+                    
+                </div>
+                <div class="w-full max-w-xl relative flex mx-auto">
+                    <span class="absolute left-2 top-3 text-lg text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" name="search" id="search"
+                        class="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
+                        placeholder="search">
+                    <button
+                        class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
+                </div>
+                
+                <div class="flex items-center justify-end p-4  text-white">
+                    <!-- Your other header content goes here -->
+                
+                    <a href="{% url 'account' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login</a>
+                    <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                        <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                        <div>Welcome ,User</div>
+                        <div class="relative inline-block">
+                            <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                            <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                 
+                    
+                </div>
+                
+            </header>    
+            
+            <nav class="flex items-center justify-start bg-blue-800 text-white">
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:underline">Home</a></li>
+                    <li class="relative group">
+                        <a href="#" class="dropbtn" onclick="toggleDropdown()">Products <i class="fa fa-caret-down"></i></a>
+                        <div id="productsDropdown" class="dropdown-content">
+                        
+                            <a href="{% url 'category' 'BK' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'category' 'AR' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'category' 'MC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
+                            <a href="{% url 'category' 'SI' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'category' 'EC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+                        </div>
+                    </li>
+                    <li><a href="{% url 'about' %}" class=" hover:underline">About</a></li>
+                    <li><a href="#" class=" hover:underline">Contact</a></li>
+                </ul>
+                <div class="flex items-center space-x-4 ml-auto pr-8">
+                    <a href="#" class="text-center text-white hover:text-primary transition relative">
+                        <div class="text-2xl">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <div class="text-xs leading-3">Wishlist</div>
+                    </a>
+                    
+                    <a href="{% url 'cart' %}" class="text-center text-white hover:text-primary transition relative">
+                        <div class="text-2xl">
+                            <i class="fa-solid fa-shopping-bag"></i>
+                        </div>
+                        <div class="text-xs leading-3">Cart</div>
+                        <div id="cartAmount" class="cartAmount">2</div>
+                    </a>
+                
+                    
+                </div>
+                 
+                
+            </nav>
+    
+
+       <!-- About Us -->
+<div class="about bg-white text-black p-10">
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Digital Dalal Street</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body>
+    <section class="flex items-centre bg-stone-100 xl:h-screen font-poppins dark:bg-white-800">
+        <div class=" flex-1 max-w-6xl py-4 mx-auto lg:pt-6 md:px-6">
+            <div class="text-center mt-4">
+                <p class="mb-2 text-4xl font-semibold text-blue-700 About us">
+                    Welcome to digital dalal street
+                </p>
+                <h2 class="text-xl font-bold text-gray-800 mt-2 mb-4">
+                    Welcome to Digital Dalal Street, where the world of stock trading meets style and functionality.
+                </h2>
+                <div class="flex w-32 mt-1 mb-6 overflow-hidden rounded md:mx-auto md:mb-14">
+                    <div class="flex-1 h-2 bg-blue-200"></div>
+                    <div class="flex-1 h-2 bg-blue-400"></div>
+                    <div class="flex-1 h-2 bg-blue-300"></div>
+                </div>
+            </div>
+            <div class="flex flex-wrap ">
+                <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
+                    <img src="../../static/app/images/banner/mission.png" alt=""
+                        class="relative z-40 object-cover w-full h-96">
+                </div>
+                <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0 mt-12 -mb-20">
+                    <h2 class="py-3 pl-2 mb-4 text-3xl font-bold text-gray-700 border-l-4 text-blue-700 border-blue-500 dark:border-blue-400 dark:text-gray-500 underline">
+                        Our Mission
+                    </h2>
+                    <p class="mb-4 px-2 text-xl text-base leading-7 text-gray-500 dark:text-gray-400">
+                        At Digital Dalal Street, we are on a mission to revolutionize the way traders experience the stock market. We believe that trading should not only be profitable but also enjoyable and stylish. Our curated collection of products is designed to make your trading journey easy, comfortable, affordable, and undeniably fashionable.
+                    </p>
+                    
+                </div>
+            </section>
+    
+            <section class="bg-white mt-8 flex flex-col gap-4">
+                <h2 class="py-3 pl-2 mb-4 text-3xl text-blue-700 font-bold text-gray-700 border-l-4 border-blue-500 dark:border-blue-400 dark:text-gray-300 underline mt-8">
+                    What we offer?
+                </h2>
+        
+                <div class="mb-10">
+                    <div class="flex mb-4">
+                        <span class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 bg-stone-100 rounded dark:bg-blue-500 dark:text-gray-100 text-gray-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5 bi bi-file-earmark-code" viewBox="0 0 16 16">
+                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                                <path d="M8.646 6.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 9 8.646 7.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 9l1.647-1.646a.5.5 0 0 0 0-.708z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h2 class="mb-4 text-xl font-bold leading-tight dark:text-gray-700 md:text-xl ">
+                                Trading Education
+                            </h2>
+                            <p class="text-base leading-loose text-gray-500 dark:text-gray-400">
+                                Unlock the secrets of the stock market with our carefully selected books. From beginner's guides to advanced investing strategies, technical and fundamental analysis, behavioral finance, and risk management, we have a curated library that caters to traders at every level.
+                            </p>
+                        </div>
+                    </div>
+        
+                    <div class="flex mb-4">
+                        <span class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 bg-stone-100 rounded dark:bg-blue-500 dark:text-gray-100 text-gray-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="w-5 h-5 bi bi-file-text" viewBox="0 0 16 16">
+                                <path
+                                    d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h2 class="mb-4 text-xl font-bold leading-tight dark:text-gray-700 md:text-xl ">
+                                Customized Electronics and Accessories
+                            </h2>
+                            <p class="text-base leading-loose text-gray-500 dark:text-gray-400">
+                                Express your passion for trading with our exclusive range of customized electronics and accessories. From mobile covers and laptop skins to mouse pads and trading flashcards, our products are designed to seamlessly blend style with functionality. 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 bg-blue-500 rounded dark:bg-blue-500 dark:text-gray-100 text-gray-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="w-5 h-5 bi bi-bag" viewBox="0 0 16 16">
+                                <path
+                                    d="M1 3a1 1 0 0 1 1-1h3.293l1 1H9.5a1 1 0 0 1 0 2H8v7a2 2 0 1 1-4 0V6H1a1 1 0 0 1-1-1zm1 7a1 1 0 0 1 2 0V6h1v4a1 1 0 0 0 2 0V6h1v4a1 1 0 0 0 2 0V6h1v4h1.207l1-1H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-7z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h2 class="mb-4 text-xl font-bold leading-tight dark:text-gray-700 md:text-xl ">
+                                Trading Merchandise
+                            </h2>
+                            <p class="text-base leading-loose text-gray-500 dark:text-gray-400">
+                                Make a statement with our trading-themed merchandise. Our collection includes trendy t-shirts and hoodies featuring unique stock market designs. Now you can wear your passion for trading on your sleeve—literally!
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="flex mb-4">
+                        <span class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 bg-stone-100 rounded dark:bg-blue-500 dark:text-gray-100 text-gray-50 p-2">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="w-5 h-5 bi bi-file-text" viewBox="0 0 16 16">
+                                <path
+                                    d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                            </svg> -->
+                            <img src="data:image/png;base64,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">
+                        </span>
+                        <div>
+                            <h2 class="mb-4 text-xl font-bold leading-tight dark:text-gray-700 md:text-xl ">
+                                Trading Posters and Decor 
+                                 </h2>
+                            <p class="text-base leading-loose text-gray-500 dark:text-gray-400">
+                                Transform your trading space with our eye-catching trading posters. Infuse inspiration into your daily routine and surround yourself with visuals that reflect your commitment to success.                         </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-6 bg-stone-100 rounded dark:bg-blue-500 dark:text-gray-700 text-gray-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="w-5 h-5 bi bi-file-text" viewBox="0 0 16 16">
+                                <path
+                                    d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                <path
+                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h2 class="mb-4 text-xl font-bold leading-tight dark:text-gray-700 md:text-xl ">
+                                Trading Journal
+                            </h2>
+                            <p class="text-base leading-loose text-gray-500 dark:text-gray-400">
+                                Stay organized and track your trading journey with our specially designed trading journals. Reflect on your wins, learn from your losses, and set new goals—all within the pages of a journal crafted for traders, by traders.                             </p>
+                        </div>
+                    </div>
+            </section>
+            <section class="bg-white mt-8">
+                <h2 class="py-3 pl-2 mb-4 text-3xl text-blue-700 font-bold text-gray-700 border-l-4 border-blue-500 dark:border-blue-400 dark:text-gray-300 underline">
+                    Why choose Digital Dalal Street?
+                </h2>
+            
+                    <!-- Easy Shopping Experience Section -->
+                <section class="mt-8">
+                    <div class="flex flex-wrap -mx-4">
+                        <div class="w-full lg:w-1/3 px-4 mb-6 lg:mb-0">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="text-center mb-4">
+                                    <div class="about_icon bg-blue-500 text-white rounded-full p-3 mx-auto">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-dark text-capitalize mt-3 font-bold text-xl">Easy Shopping Experience</h5>
+                                <p class="mt-3 mb-0 text-muted">Navigating our online store is as seamless as executing a well-planned trade. Our user-friendly interface ensures that you find what you need effortlessly.</p>
+                            </div>
+                        </div>
+                
+                        <div class="w-full lg:w-1/3 px-4 mb-6 lg:mb-0">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="text-center mb-4">
+                                    <div class="about_icon bg-blue-500 text-white rounded-full p-3 mx-auto">
+                                        <i class="fab fa-angellist"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-dark text-capitalize mt-3 font-bold text-xl">Comfortable and Affordable</h5>
+                                <p class="mt-3 mb-0 text-muted">We believe that a comfortable and stylish trading experience shouldn't break the bank. That's why we offer a range of affordable products without compromising on quality.</p>
+                            </div>
+                        </div>
+                
+                        <div class="w-full lg:w-1/3 px-4 mb-6 lg:mb-0">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <div class="text-center mb-4">
+                                    <div class="about_icon bg-blue-500 text-white rounded-full p-3 mx-auto">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-dark text-capitalize mt-3 font-bold text-xl">Fashionable Trading</h5>
+                                <p class="mt-3 mb-0 text-muted">Why settle for the ordinary when you can trade in style? Our fashionable merchandise lets you showcase your love for the stock market with flair.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            
+                <h2 class="py-3 pl-2 mb-4 text-3xl text-blue-700 font-bold text-gray-700 border-l-4 border-blue-500 dark:border-blue-400 dark:text-gray-300 underline mt-12">
+                    Join the Digital Dalal Street Community 
+                </h2>
+                
+                <p class="text-lg mb-4">
+                    Digital Dalal Street is more than a marketplace; it's a community of traders who share a passion for success and a love for all things in the stock market. Connect with like-minded individuals, share trading tips, and showcase your unique style within our growing community.
+                </p>
+                
+                <!-- Add a space or any desired spacing between the sections -->
+                
+                <h2 class="py-3 pl-2 mb-4 text-3xl mt-12 text-blue-700 font-bold text-gray-700 border-l-4 border-blue-500 dark:border-blue-400 dark:text-gray-300 underline">
+                    Explore the Future of Trading with Digital Dalal Street                     
+                </h2>
+                
+                <p class="text-lg">
+                    Discover a world where trading meets fashion, education meets style, and your trading journey is transformed. Join us at Digital Dalal Street and elevate your trading experience today.
+                </p>
+                
+                </div>
+            </section>
+            
+    
+
+
+ <!----------------------------------footer--------------------------->
+ <div class="flex items-end w-full min-h-screen bg-white">
+
+    <footer class="w-full text-white bg-gray-800 body-font">
+        <div
+            class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+            <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+            
+                <a class="flex items-center justify-center font-bold  text-white title-font md:justify-start font-caveat text-2xl">
+                    Digital Dalal Street
+                </a>
+                
+                <p class="mt-2 text-sm text-white">Seamless Trading, Limitless Shopping.</p>
+                <div class="mt-4">
+                    <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+                        <a class="text-white cursor-pointer hover:text-gray-700>
+                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-white cursor-pointer hover:text-gray-700">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                            </svg>
+                        </a>
+                        <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="https://wa.me/8448640308?text=Hello">
+                            <!-- WhatsApp Icon with increased size and margin -->
+                            <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
+                        </a>
+                        
+                        
+                        
+                        <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">
+                            <!-- Gmail Icon with increased size -->
+                            <i class="far fa-envelope fa-lg"></i>
+                        </a>
+                        
+                        
+                    </span>
+                </div>
+                
+            </div>
+            <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
+
+                <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                    <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
+                
+                    <ul class="list-none">
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-900">Company</a>
+                        </li>
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Products</a>
+                        </li>
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
+                        </li>
+                    </ul>
+                </div>
+                
+               
+                <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                    <h2 class="mb-3 text-sm text-white font-medium tracking-widest font-bold uppercase title-font">Support</h2>
+
+                    </h2>
+                    <ul class="list-none">
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+                        </li>
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
+                        </li>
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                    <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                    <ul class="list-none">
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
+                        </li>
+                        <li class="mt-3">
+                            <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
+                        </li>
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Ph no. 7982406738
+                                                                                             8448640308
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue-800">
+            <div class="container px-5 py-4 mx-auto">
+                <p class="text-sm text-white capitalize xl:text-center">© 2023 All rights reserved </p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-------------------------------------js for toggle menu-------------------------------------->
+
+<script>
+    const userIcon = document.getElementById('userIcon');
+    const dropdown = document.getElementById('dropdown');
+
+    userIcon.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+</script>
+
+</body>
+<script script="{% static 'app/js/owl.carousel.min.js' %}"></script>
+<script script="{% static 'app/js/all.min.js' %}"></script>
+<script src="{% static 'app/js/Data.js' %}"></script>
+<script src="{% static 'app/js/main.js' %}"></script> 
+
+</html>

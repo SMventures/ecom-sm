@@ -1,44 +1,40 @@
 <!DOCTYPE html>
-<!-- {% load static %} -->
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Digital Dalal street </title>
-    <!-- <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/> -->
-    <link rel="stylesheet" href="../../static/app/css/style.css"/>
-
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/>
+    {% comment %} <link rel="stylesheet" href="../../static/app/css/style.css"/> {% endcomment %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function menutoggle() {
-            var dropdown = document.getElementById("productsDropdown");
-            dropdown.classList.toggle("show");
-        }
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-GLhlTQ8i6cP7rYe9HqF7Q+tC4lMTn2jgI5FqG5RbFawds+4s2GpLvYY3bGcd6hX" crossorigin="anonymous">
 
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+    <body>
+        <script>
+            function toggleDropdown() {
+                var dropdown = document.getElementById("productsDropdown");
+                dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            }
+    
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdown = document.getElementById("productsDropdown");
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
                     }
                 }
             }
-        }
-    </script>
-
-</head>
-    <body>
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-
-        <div class="bg-blue-200">
+        </script>
+        <div class="">
             
             <header class="py-4 shadow-sm bg-white">
                 <div class="container flex items-center justify-between">
@@ -50,10 +46,6 @@
                         <p class="ml-3 text-blue-700 font-bold text-xl flex items-center justify-center">
                             Digital Dalal Street
                         </p>
-
-                      
-                    
-               
                     
                 </div>
                 <div class="w-full max-w-xl relative flex mx-auto">
@@ -70,28 +62,42 @@
                 <div class="flex items-center justify-end p-4  text-white">
                     <!-- Your other header content goes here -->
                 
-                    <a href="#" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login</a>
-                    <a href="#" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded">Signup</a>
+                    <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
+                    <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                        <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                        <div>Welcome ,User</div>
+                        <div class="relative inline-block">
+                            <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                            <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                 
+                    
                 </div>
                 
             </header>    
             
             <nav class="flex items-center justify-start bg-blue-800 text-white">
-                
                 <ul class="flex space-x-4">
-                    <li><a href="/" class=" hover:underline">Home</a></li>
+                    <li><a href="/" class="hover:underline">Home</a></li>
                     <li class="relative group">
-                        <a href="#" class=" hover:underline" onclick="menutoggle()">Products <i class="fa fa-caret-down"></i></a>
-                        <div class="absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-lg group-hover:block">
-                            <a href="/item" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+                        <a href="#" class="dropbtn" onclick="toggleDropdown()">Products <i class="fa fa-caret-down"></i></a>
+                        <div id="productsDropdown" class="dropdown-content">
+                        
+                            <a href="{% url 'category' 'BK' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'category' 'AR' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'category' 'MC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
+                            <a href="{% url 'category' 'SI' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'category' 'EC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
                         </div>
                     </li>
-                    <li><a href="#" class=" hover:underline">About</a></li>
-                    <li><a href="#" class=" hover:underline">Contact</a></li>
+                    <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
+                    <li><a href="#contact" class="text-white cursor-pointer hover:underline">Contact us</a></li> 
+
                 </ul>
                 <div class="flex items-center space-x-4 ml-auto pr-8">
                     <a href="#" class="text-center text-white hover:text-primary transition relative">
@@ -101,198 +107,684 @@
                         <div class="text-xs leading-3">Wishlist</div>
                     </a>
                     
-                    <a href="{% url 'cart' %}" class="text-center text-white hover:text-primary transition relative">
+                    <a href="{% url 'showcart' %}" class="text-center text-white hover:text-primary transition relative">
                         <div class="text-2xl">
                             <i class="fa-solid fa-shopping-bag"></i>
                         </div>
                         <div class="text-xs leading-3">Cart</div>
-                        <div id="cartAmount" class="cartAmount">2</div>
+                        <div id="cartAmount" class="cartAmount"></div>
                     </a>
                 
-                    <a href="{% url 'account' %}" class="text-center text-white hover:text-primary transition relative">
-                        <div class="text-2xl">
-                            <i class="fa-regular fa-user"></i>  
-                        </div>
-                        <div class="text-xs leading-3">Account</div>
-                    </a>
+                    
                 </div>
                 
                 
                 
             </nav>
             
+         
+            <div class="carousel">
+                <div class="carousel-inner" id="carouselInner">
+                  <div class="carousel-item">
+                    <a href="your-required-image-page-1.html" >
+                    <img src="../../static/app/images/banner/DDS_Banner.png" alt="Image 1 ">
+                    </a>
+                   
+                  </div>
+                  <div class="carousel-item">
+                    <a href="{% url 'category' 'EC' %}" >
+                    <img src="../../static/app/images/banner/gadgets_banners.png" alt="Image 2" class="w-full h-42 ">
+                    
+                    </a>
+                  </div>
+                
+                  
+                  <div class="carousel-item">
+                    <a href="{% url 'category' 'BK' %}" >
+                    <img src="../../static/app/images/banner/books_banner.png" alt="Image 3"  class="w-full h-42 ">
+                    </a>
+                  </div>
 
+                  <div class="carousel-item">
+                    <a href="{% url 'category' 'AR' %}" >
+                    <img src="../../static/app/images/banner/Accessories_Banners.png" alt="Image 4"  class="w-full h-42 ">
+                    </a>
+                  </div>
+
+                  <div class="carousel-item">
+                    <a href="{% url 'category' 'SI' %}" >
+                    <img src="../../static/app/images/banner/stationery_b.png" alt="Image 5"  class="w-full h-42 ">
+                    </a>
+                  </div>
+
+                  <div class="carousel-item">
+                    <a href="{% url 'category' 'MC' %}" >
+                    <img src="../../static/app/images/banner/tshirts_b.png" alt="Image 6"  class="w-full h-42 ">
+                    </a>
+                  </div>
+
+                </div>
+            </div>
+              
+              
+              
+            <script>
+                // JavaScript for automatic image change
+                const carouselInner = document.getElementById('carouselInner');
+                const totalImages = document.querySelectorAll('.carousel-item').length;
+
+                let currentIndex = 0;
+
+                const showImage = (index) => {
+                 const offset = -index * 100;
+                 carouselInner.style.transform = `translateX(${offset}%)`;
+                };
+
+                 const nextImage = () => {
+                 currentIndex = (currentIndex + 1) % totalImages;
+                showImage(currentIndex);
+                 };
+
+                // Change image every 3 seconds (adjust as needed)
+                setInterval(nextImage, 5000);
+
+                // Initial display
+                showImage(currentIndex);
+
+              </script>
+         
+<!-- features -->
+<div class="container py-16">
+    <div class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="../../static/app/images/product/delivery-van.svg" alt="Delivery" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">Free Shipping</h4>
+                <p class="text-gray-500 text-sm">Order over $200</p>
+            </div>
+        </div>
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="../../static/app/images/product/money-back.svg"  alt="Delivery" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">Money Rturns</h4>
+                <p class="text-gray-500 text-sm">30 days money returs</p>
+            </div>
+        </div>
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="../../static/app/images/product/service-hours.svg" alt="Delivery" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">24/7 Support</h4>
+                <p class="text-gray-500 text-sm">Customer support</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./features -->
             
-        <div class="containers bg-blue-100 pt-14">
-            <div class="row" style="padding-left: 82px;">
-                <div class="col-2">
-                <h1>Bringing a new revolution<br></h1>
-                    <p>Start where you are. Use what you have. Do what you can.</p>
-                    <a href="products.html" class="btn bg-blue-700 text-white">Explore Now &#8594;</a>
-                </div>
-                <div class="col-2" style="margin-bottom: 61px;"> 
-                    <img src="{% static 'app/images/banner/bull.jpg' %}">
-                </div>
-            </div>
-        </div>
-        </div>
+       
         
-        <!------------------------------------------featured categories-------------------------------------->
-        <div class="categories">
-            <div class="container">
-                <h2 class="title">Now Trending</h2>
-        <div class="row">
-            <div class="col-3">
-                <a href="product-details.html"><img src="{% static 'app/images/product/category-9.jpg' %}"></a>
-                <a href="product-details.html"><h4>Trading in the zone</h4></a>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>&#8377 595</p>
+                <!------------------------------------------featured categories-------------------------------------->
+                 <!-- categories -->
+    <div class="container py-16 object-contain h-auto w-auto " >
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
+        <div class="grid grid-cols-3 gap-3 ">
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/image-1080x800 (39).jpg" alt="category 1" class="w-full">
+                <a href="{% url 'category' 'BK' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Books</a>
             </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-10.jpg' %}">
-                <h4>Market wizards</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 699</p>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/black_hoodie.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'category' 'MC' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Merchandise</a>
             </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-11.jpg' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 1097</p>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/image-1080x800 (20).jpg" alt="category 1" class="w-full">
+                <a href="{% url 'category' 'AR' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Accessories
+                </a>
             </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-12.jpg' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 899</p>
-            </div>    
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/image-1080x800 (22).jpg" alt="category 1" class="w-full">
+                <a href="{% url 'category' 'EC' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Electronics</a>
             </div>
-  <!---------------------------------------------------------New Arrivals--------------------------->
-        <h2 class="title">New Arrivals</h2>
-        <div class="row">
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-1.png' %}">
-                <h4>Trading in the zone</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>&#8377 595</p>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../../media/product/diary1.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'category' 'SI' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Stationery
+                    Room</a>
             </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-2.png' %}">
-                <h4>Market wizards</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 699</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-3.png' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 1097</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-4.png' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 899</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-5.png' %}">
-                <h4>Trading in the zone</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>&#8377 595</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-6.png' %}">
-                <h4>Market wizards</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 699</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-7.png' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 1097</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-8.png' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>&#8377 899</p>
-            </div>
-                </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/combos1.jpg" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Combos</a>
             </div>
         </div>
+    </div>
+    <!-- ./categories -->
+
+    <div class="py-8"></div>
+
+    <!-- new arrival -->
+    <div class="container pb-16">
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Top New Arrivals</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (34).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">white phone cover
+                            </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 110</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 140</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/headphn.jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Head phones
+                       </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 1000</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 1300</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-s
+                                <div class="carousel-item">tar"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (27).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            Mouse</h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 600</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 800</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (19).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            Laptop bag</h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 800</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 1000</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+        </div>
+    </div>
+    <!-- ./new arrival -->
+    <div class="py-8"></div>
+
+            <!-- ads -->
+    <div class="container pb-16">
+        <a href="#">
+            <img src="../../static/app/images/banner/products.png" alt="ads" class="w-full">
+        </a>
+    </div>
+    <!-- ./ads -->
+
+    <!-- product -->
+    <div class="container pb-16">
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Now Trending</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (2).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">White hoodie
+                            </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 700</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 800</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (11).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">White tshirt
+                       </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs350</p>
+                        <p class="text-sm text-gray-400 line-through">Rs500</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (23).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            STOCK MARKET BLACK PHONE COVER</h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 110</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 130</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (52).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">BLACK LAPTOP COVER
+                            </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 100</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 170</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="=../../static/app/images/product/image-1080x800 (53).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Stock market wizard book
+                            </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 250</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 300</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (24).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            Black diary</h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 200</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 250</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (32).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            White stock tshirt</h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 350</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 400</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (31).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            Pink phone cover</h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 120</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 160</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+            </div>
+        </div>
+    </div>
+    <!-- ./product -->
+    <div class="mt-8"></div>
+
        <!-------------------------offer-------------> 
        <div class="offer">
         <div class="small-container">
@@ -301,7 +793,7 @@
                <img src="{% static 'app/images/product/exclusive.png' %}">
                </div>
             <div class="col-2">
-               <p>Exclusively Available on Trading Mentor</p>
+               <p>Exclusively Available on Digital dalal street</p>
                 <h1>The Complete Guide To Day Trading</h1>
                 <small>The Complete Guide to Day Trading You picked up this book because you’re serious about becoming a successful day trader. And, by reading this book, that’s exactly what you’ll learn how to do.<br></small>
                <a href="" class="btn">Buy Now &#8594;</a>
@@ -309,141 +801,311 @@
             </div>
            </div>
         </div> 
+
+        <div class="py-12"><!-- Add margin-bottom or use pb-8 for padding-bottom --></div>
+
         <!-------------------------------------Best Seller---------------------------------------->
-        <div class="Best-seller">
-            <div class="small-container">
-                <h2 class="title">Best Sellers</h2>
-        <div class="row">
-            <div class="col-3">
-                <img src="{% static 'app/images/product/category-13.jpg' %}">
-                <h4>Trading in the zone</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>&#8377 595</p>
+        <div class="container pb-16">
+            <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Best sellers</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white shadow rounded overflow-hidden group">
+                    <div class="relative">
+                        <img src="../../static/app/images/product/image-1080x800 (43).jpg" alt="product 1" class="w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                        justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                            <a href="#"
+                                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                                title="view product">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                            <a href="#"
+                                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                                title="add to wishlist">
+                                <i class="fa-solid fa-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pt-4 pb-3 px-4">
+                        <a href="#">
+                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Currency trading and intermarket analysis
+                                </h4>
+                        </a>
+                        <div class="flex items-baseline mb-1 space-x-2">
+                            <p class="text-xl text-primary font-semibold">Rs 699</p>
+                            <p class="text-sm text-gray-400 line-through">Rs 800</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex gap-1 text-sm text-yellow-400">
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <div class="text-xs text-gray-500 ml-3">(150)</div>
+                        </div>
+                    </div>
+                    <a href="#"
+                        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                        to cart</a>
             </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-14.jpg' %}">
-                <h4>Market wizards</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (45).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
                 </div>
-                <p>&#8377 699</p>
-            </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-15.jpg' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Technical analysis of currency market
+                            </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 599</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 699</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
                 </div>
-                <p>&#8377 1097</p>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
             </div>
-            <div class="col-3">
-            <img src="{% static 'app/images/product/category-16.jpg' %}">
-                <h4>Beat the forex dealer</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                <div class="relative">
+                    <img src="../../static/app/images/product/image-1080x800 (46).jpg" alt="product 1" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                    </div>
                 </div>
-                <p>&#8377 899</p>
+                <div class="pt-4 pb-3 px-4">
+                    <a href="#">
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Trading in the zone
+                            </h4>
+                    </a>
+                    <div class="flex items-baseline mb-1 space-x-2">
+                        <p class="text-xl text-primary font-semibold">Rs 599</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 699</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex gap-1 text-sm text-yellow-400">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                </div>
+                <a href="#"
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                    to cart</a>
+               
             </div>
+            <div class="bg-white shadow rounded overflow-hidden group">
+                    <div class="relative">
+                        <img src="../../static/app/images/product/image-1080x800 (47).jpg" alt="product 1" class="w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                        justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                            <a href="#"
+                                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                                title="view product">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                            <a href="#"
+                                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                                title="add to wishlist">
+                                <i class="fa-solid fa-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pt-4 pb-3 px-4">
+                        <a href="#">
+                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">The candlestick course
+                                </h4>
+                        </a>
+                        <div class="flex items-baseline mb-1 space-x-2">
+                            <p class="text-xl text-primary font-semibold">Rs 799</p>
+                            <p class="text-sm text-gray-400 line-through">Rs 899</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex gap-1 text-sm text-yellow-400">
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <div class="text-xs text-gray-500 ml-3">(150)</div>
+                        </div>
+                    </div>
+                    <a href="#"
+                        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
+                        to cart</a>
+            
                 </div>
             </div>
         </div>
-                
-        <!------------------------testimonial------------------------------>
-        <div class="testimonial">
-        <div class="small-container">
-            <h2 class="title">Featured Authors</h2>
-            <div class="row">
-            <div class="col-3">
-                <i class="fa fa-quote-left"></i>
-                <p>Traders focus almost entirely on where to enter a trade. In reality, the entire size is often more important than the entry price.<br></p>
-                <img src="{% static 'app/images/product/author-1.jpg' %}">
-                <h3>Jack Schwager</h3>
-                </div>
-                <div class="col-3">
-                <i class="fa fa-quote-left"></i>
-                <p>If an umbrella line emerges during a downtrend, it is a signal that the downtrend should end.<br></p>
-                <img src="{% static 'app/images/product/author-2.jpg' %}">
-                <h3>Steve Nison</h3>
-                </div>
-                <div class="col-3">
-                <i class="fa fa-quote-left"></i>
-                <p>Buying without the ability to sell is like a football team that is all offense with no defense.<br></p>
-                <img src="{% static 'app/images/product/author-3.jpg' %}">
-                <h3>William O'Neil</h3>
-                </div>
-                <div class="col-3">
-                <i class="fa fa-quote-left"></i>
-                <p>Taking a few days off from wathing the market to clear your mind can be the best remedy for a losing streak.<br></p>
-                <img src="{% static 'app/images/product/author-4.jpg' %}">
-                <h3>Kathy Linen</h3>
-                </div>
-            </div>
-            </div></div>
+        <div class="mt-12"><!-- Add margin-bottom or use pb-8 for padding-bottom --></div>
+
+       
         <!----------------------------------footer--------------------------->
-        <div class="footer">
-        <div class="container">
-            <div class="row">
-            <div class="footer-col-1">
-                <h3>Download Our App</h3>
-                <p>Download App for Android and IOS mobile phhone.</p>
-                <div class="app-logo">
-                <img src="{% static 'app/images/product/play-store.png' %}">
-                    <img src="{% static 'app/images/product/app-store.png' %}">
-                </div>
-                </div>
-            <div class="footer-col-2">
-                <img src="{% static 'app/images/product/logo.png' %}">
-                <p>Start where you are. Use what you have. Do what you can.</p>
-                </div>
-            <div class="footer-col-3">
-                <h3>Useful Links</h3>
-                <ul>
-                <li>Coupons</li>
-                <li>Blog Post</li>
-                <li>Return Policy</li>
-                <li>Join Affiliate</li>
-                </ul>
-                </div>
-                <div class="footer-col-4">
-                <h3>Follow us</h3>
-                    <ul>
-                <li>Facebook</li>
-                <li>Twitter</li>
-                <li>Instagram</li>
-                <li>Youtube</li>
-                </ul>
-                </div>
-            </div>
-            </div>
-            <div class="shop" style="display: none;" id="shop">
+        <div class="flex items-end w-full min-h-screen bg-white">
 
+            <footer class="w-full text-white bg-gray-800 body-font">
+                <div
+                    class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+                    <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+                    
+                        <a class="flex items-center justify-center font-bold  text-white title-font md:justify-start font-caveat text-2xl">
+                            Digital Dalal Street
+                        </a>
+                        
+                        <p class="mt-2 text-sm text-white">Seamless Trading, Limitless Shopping.</p>
+                        <div class="mt-4">
+                            <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+                                <a class="text-white cursor-pointer hover:text-gray-700>
+                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700">
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="https://wa.me/8448640308?text=Hello">
+                                    <!-- WhatsApp Icon with increased size and margin -->
+                                    <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
+                                </a>
+                                
+                                
+                                
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">
+                                    <!-- Gmail Icon with increased size -->
+                                    <i class="far fa-envelope fa-lg"></i>
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
 
-            </div>
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
+                        
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-900">Company</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Products</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                       
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm text-white font-medium tracking-widest font-bold uppercase title-font">Support</h2>
+
+                            </h2>
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Ph no. 7982406738
+                                                                                                     8448640308
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue-800">
+                    <div class="container px-5 py-4 mx-auto">
+                        <p class="text-sm text-white capitalize xl:text-center">© 2023 All rights reserved </p>
+                    </div>
+                </div>
+            </footer>
+        
         </div>
         <!-------------------------------------js for toggle menu-------------------------------------->
+
+        <script>
+            const userIcon = document.getElementById('userIcon');
+            const dropdown = document.getElementById('dropdown');
+        
+            userIcon.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden');
+            });
+        
+            document.addEventListener('click', (event) => {
+                if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        </script>
      
     </body>
-    <script script="{% static 'app/js/owl.carousel.min.js' %}"></script>
-    <script script="{% static 'app/js/all.min.js' %}"></script>
-    <script src="{% static 'app/js/Data.js' %}"></script>
-    <script src="{% static 'app/js/main.js' %}"></script> 
-    
+    <script script="../..static/app/js/owl.carousel.min.js %"></script>
+    <script script="../..static/app/js/all.min.js"></script>
+    <script src="../../static/app/js/Data.js %"></script>
+    <script src="../../static/app/js/main.js"></script> 
+
 </html>
