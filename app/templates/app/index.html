@@ -118,55 +118,79 @@
                     
                 </div>
                 
-                
-                
             </nav>
             
-            <div class="carousel">
-                <div class="carousel-inner" id="carouselInner">
-                  <div class="carousel-item">
-                    <a href="your-required-image-page-1.html" >
-                    <img src="../../static/app/images/banner/DDS_Banner.png" alt="Image 1 ">
-                    </a>
-                   
-                  </div>
-                  <div class="carousel-item">
-                    <a href="{% url 'category' 'EC' %}" >
-                    <img src="../../static/app/images/banner/gadgets_banners.png" alt="Image 2" class="w-full h-42 ">
-                    
-                    </a>
-                  </div>
-                
-                  
-                  <div class="carousel-item">
-                    <a href="{% url 'category' 'BK' %}" >
-                    <img src="../../static/app/images/banner/books_banner.png" alt="Image 3"  class="w-full h-42 ">
-                    </a>
-                  </div>
+<!-- Component: Carousel with indicators outside -->
+<div class="relative w-full glide-05">
+    <!-- Slides -->
+    <div class="overflow-hidden" data-glide-el="track">
+        <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap">
+            <li class="glide__slide"><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" />
+            <li class="glide__slide"><img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'category' 'EC' %}"></a></li>
+                <a href="{% url 'category' 'BK' %}"><li class="glide__slide"><img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" />
+                    </li>
+                </a>
+          
+            <li class="glide__slide"><img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'category' 'AR' %}"></a></li>
+            <li class="glide__slide"><img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'category' 'SI' %}">
 
-                  <div class="carousel-item">
-                    <a href="{% url 'category' 'AR' %}" >
-                    <img src="../../static/app/images/banner/Accessories_Banners.png" alt="Image 4"  class="w-full h-42 ">
-                    </a>
-                  </div>
+                </a>
+            </li>
+            <li class="glide__slide"><img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'category' 'MC' %}">
 
-                  <div class="carousel-item">
-                    <a href="{% url 'category' 'SI' %}" >
-                    <img src="../../static/app/images/banner/stationery_b.png" alt="Image 5"  class="w-full h-42 ">
-                    </a>
-                  </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Indicators -->
+    <div class="flex items-center justify-center w-full gap-2" data-glide-el="controls[nav]">
+        <button class="p-4 group" data-glide-dir="=0" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=1" aria-label="goto slide 2"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=2" aria-label="goto slide 3"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=3" aria-label="goto slide 4"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=4" aria-label="goto slide 5"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=5" aria-label="goto slide 6"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+    </div>
+</div>
 
-                  <div class="carousel-item">
-                    <a href="{% url 'category' 'MC' %}" >
-                    <img src="../../static/app/images/banner/tshirts_b.png" alt="Image 6"  class="w-full h-42 ">
-                    </a>
-                  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
 
-                </div>
-            </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var glide05 = new Glide('.glide-05', {
+            type: 'carousel',
+            focusAt: 'center',
+            perView: 1, // Set to 1 to display one item at a time
+            autoplay: 2000, // Set autoplay to 3000 milliseconds (3 seconds)
+            animationDuration: 700,
+            gap: 24,
+            classes: {
+                activeNav: '[&>*]:bg-slate-700',
+            },
+            breakpoints: {
+                1024: {
+                    perView: 1
+                },
+                640: {
+                    perView: 1
+                }
+            },
+        });
+
+        glide05.mount();
+    });
+</script>
+
+
+
+<!-- End Carousel with indicators outside -->
               
               
-            <script>
+         <!--   <script>
                 // JavaScript for automatic image change
                 const carouselInner = document.getElementById('carouselInner');
                 const totalImages = document.querySelectorAll('.carousel-item').length;
@@ -189,7 +213,7 @@
               
                 // Initial display
                 showImage(currentIndex);
-              </script>
+              </script> -->
               
          
 <!-- features -->
@@ -306,9 +330,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -347,9 +372,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -388,13 +414,14 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/bag2.jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/camera.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -412,11 +439,11 @@
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            Laptop bag</h4>
+                            Camera</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
-                        <p class="text-xl text-primary font-semibold">Rs 800</p>
-                        <p class="text-sm text-gray-400 line-through">Rs 1000</p>
+                        <p class="text-xl text-primary font-semibold">Rs 1299</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 1399</p>
                     </div>
                     <div class="flex items-center">
                         <div class="flex gap-1 text-sm text-yellow-400">
@@ -429,9 +456,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
         </div>
     </div>
@@ -487,9 +515,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -528,13 +557,14 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/pink_cover.jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/bag2.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -552,11 +582,11 @@
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            STOCK MARKET PINK PHONE COVER</h4>
+                            Laptop bag</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
-                        <p class="text-xl text-primary font-semibold">Rs 110</p>
-                        <p class="text-sm text-gray-400 line-through">Rs 130</p>
+                        <p class="text-xl text-primary font-semibold">Rs 899</p>
+                        <p class="text-sm text-gray-400 line-through">Rs 999</p>
                     </div>
                     <div class="flex items-center">
                         <div class="flex gap-1 text-sm text-yellow-400">
@@ -569,9 +599,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -610,9 +641,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -651,9 +683,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -673,9 +706,9 @@
                     </div>
                 </div>
                 <div class="pt-4 pb-3 px-4">
-                    <a href="#">
+                        <a href="#">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                            White phone cover</h4>
+                                White cover</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
                         <p class="text-xl text-primary font-semibold">Rs 200</p>
@@ -692,9 +725,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -733,9 +767,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -774,9 +809,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
         </div>
     </div>
@@ -808,7 +844,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="bg-white shadow rounded overflow-hidden group">
                     <div class="relative">
-                        <img src="../../static/app/images/product/investing_book.jpg" alt="product 1" class="w-full">
+                        <img src="../../static/app/images/product/red_ book.jpg" alt="product 1" class="w-full">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                         justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                             <a href="#"
@@ -825,7 +861,7 @@
                     </div>
                     <div class="pt-4 pb-3 px-4">
                         <a href="#">
-                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">stock market investing for beginners
+                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Investor's guide
                                 </h4>
                         </a>
                         <div class="flex items-baseline mb-1 space-x-2">
@@ -843,13 +879,14 @@
                             <div class="text-xs text-gray-500 ml-3">(150)</div>
                         </div>
                     </div>
-                    <a href="#"
-                        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                        to cart</a>
+                    <form action="/add-to-cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value={{prod.id}} />
+                        <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                    </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="../../static/app/images/product/tech_analysis.jpg" alt="product 1" class="w-full">
+                    <img src="../../static/app/images/product/mkt_wizards.jpg" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <a href="#"
@@ -866,7 +903,7 @@
                 </div>
                 <div class="pt-4 pb-3 px-4">
                     <a href="#">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Technical analysis of currency market
+                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">market wizards
                             </h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
@@ -884,9 +921,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="/add-to-cart"
-                 class="btn btn-primary text-white flex items-center justify-center rounded-full  bg-blue-700 px-5 py-2">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -925,9 +963,10 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                    <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                </form>
                
             </div>
             <div class="bg-white shadow rounded overflow-hidden group">
@@ -967,9 +1006,10 @@
                             <div class="text-xs text-gray-500 ml-3">(150)</div>
                         </div>
                     </div>
-                    <a href="#"
-                        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                        to cart</a>
+                    <form action="/add-to-cart" class="d-inline">
+                        <input type="hidden" name="prod_id" value={{prod.id}} />
+                        <button type="submit"  class="btn btn-primary shadow px-5 py-2 bg-blue-700 text-white">Add to Cart</button>
+                    </form>
             
                 </div>
             </div>
