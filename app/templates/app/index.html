@@ -1015,6 +1015,7 @@
             </div>
         </div>
         <div class="mt-12"><!-- Add margin-bottom or use pb-8 for padding-bottom --></div>
+        
 
        
         <!----------------------------------footer--------------------------->
@@ -1069,10 +1070,10 @@
                         
                             <ul class="list-none">
                                 <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-900">Company</a>
+                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Company</a>
                                 </li>
                                 <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">Products</a>
+                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Products</a>
                                 </li>
                                 <li class="mt-3">
                                     <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
@@ -1092,9 +1093,11 @@
                                 <li class="mt-3">
                                     <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
                                 </li>
+                                
                                 <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                                    <a href= "{% url 'FAQs' %}" class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
                                 </li>
+                                
                             </ul>
                         </div>
                         <div class="w-full px-4 lg:w-1/4 md:w-1/2">

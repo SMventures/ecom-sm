@@ -44,7 +44,7 @@ class CategoryView(View):
 class CustomerRegistrationView(View):
     def get(self,request):
         form = CustomerRegistrationForm()
-        return render(request, 'app/customerregistration.html',locals())  
+        return render(request,"app/customerregistration.html",locals())  
     def post(self,request):
         form = CustomerRegistrationForm(request.POST)
         if form.is_valid():
@@ -52,6 +52,7 @@ class CustomerRegistrationView(View):
             messages.success(request,"Congratulations!User Registered Successfully")
         else:
             messages.warning(request,"Invalid Input Data")    
+<<<<<<< HEAD
      
         
         return redirect("login") 
@@ -82,6 +83,15 @@ def address(request):
     add = Customer.objects.filter(user=request.user)
     print(add)
     return render(request,'app/address.html',locals())   
+=======
+        return render(request, "app/customerregistration.html",locals()) 
+
+class ProfileView(View):
+    def  get(self,request):
+        return render(request, "app/profile.html",locals())
+    def  post(self,request):
+        return render(request, "app/profile.html", locals())
+>>>>>>> 3751f10c958c49ab59afbb90619e0db61987ab7f
     
 class updateAddress(View):   
     def get(self, request,pk):
@@ -119,7 +129,9 @@ def show_cart(request):
     cart = Cart.objects.filter(user=user)
     return render(request, 'app/addtocart.html',locals())
 
-    
+class FAQsView(View):
+    def get(self,request):
+        return render(request,'app/FAQs.html',locals())
     
 
 
