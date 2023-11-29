@@ -15,7 +15,7 @@ urlpatterns = [
     path("add-to-cart/", views.add_to_cart,name="add-to-cart"),
     path("cart/", views.show_cart,name="showcart"),
     path("checkout/", views.show_cart,name="checkout"),
-<<<<<<< HEAD
+
     
     
     path('profile/',views.ProfileView.as_view(),name='profile'),
@@ -34,10 +34,9 @@ urlpatterns = [
     path('password-reset-complete/', auth_view.PasswordResetView.as_view(template_name='app/password_reset_complete.html',form_class=MyPasswordResetForm),name='password_reset_complete'),
     
 
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-=======
+
     path("FAQs/", views.FAQsView.as_view(), name="FAQs" ),
->>>>>>> 3751f10c958c49ab59afbb90619e0db61987ab7f
+
 
    path("profile/", views.ProfileView.as_view(), name="profile"),
     path("registration/", views.CustomerRegistrationView.as_view(), name="customerregistration"),
