@@ -14,24 +14,11 @@ urlpatterns = [
     path("product-detail/<int:pk>", views.ProductDetail.as_view(),name="product-detail"),
     path("add-to-cart/", views.add_to_cart,name="add-to-cart"),
     path("cart/", views.show_cart,name="showcart"),
-<<<<<<< HEAD
-    path("FAQs/", views.FAQsView.as_view(), name="FAQs" ),
-    path("terms/",views.termsView.as_view(), name="terms"),
-    path("profile/", views.ProfileView.as_view(), name="profile"),
-
-    path("checkout/", views.checkout.as_view(),name="checkout"),
-   
-    
-    path("pluscart/", views.plus_cart),
-    path("minuscart/", views.minus_cart),
-    path("removecart/", views.remove_cart),
-   
-=======
 
     #path("checkout/", views.show_cart,name="checkout"),
     path("FAQs/", views.FAQsView.as_view(), name="FAQs" ),
-   #path("terms/",views.termsView.as_view(), name="terms"),
-   path("profile/", views.ProfileView.as_view(), name="profile"),
+    path("terms/",views.termsView.as_view(), name="terms"),
+    path("profile/", views.ProfileView.as_view(), name="profile"),
 
 
     path("checkout/", views.show_cart,name="checkout"),
@@ -44,7 +31,6 @@ urlpatterns = [
     #path("removecart/", views.remove_cart),
 
     
->>>>>>> 6982bc2455daff704bbd17ab0c05b8f04fd53717
     
     path('profile/',views.ProfileView.as_view(),name='profile'),
     path('address/',views.address,name='address'),
@@ -62,10 +48,7 @@ urlpatterns = [
     path('password-reset-complete/', auth_view.PasswordResetView.as_view(template_name='app/password_reset_complete.html',form_class=MyPasswordResetForm),name='password_reset_complete'),
 
     path("profile/", views.ProfileView.as_view(), name="profile"),
-<<<<<<< HEAD
-=======
 
->>>>>>> 6982bc2455daff704bbd17ab0c05b8f04fd53717
     path("registration/", views.CustomerRegistrationView.as_view(), name="customerregistration"),
     path("accounts/login/", auth_view.LoginView.as_view(template_name="app/login.html", authentication_form=LoginForm), name="login"),
     path("password-reset/", auth_view.PasswordResetView.as_view(template_name="app/password_reset.html", form_class=MyPasswordResetForm), name='password_reset'),   
