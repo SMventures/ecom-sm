@@ -52,6 +52,7 @@ class CustomerRegistrationView(View):
             messages.success(request,"Congratulations!User Registered Successfully")
         else:
             messages.warning(request,"Invalid Input Data")    
+<<<<<<< HEAD
         return render(request, "app/customerregistration.html",locals()) 
 
 class ProfileView(View):
@@ -60,6 +61,47 @@ class ProfileView(View):
     def  post(self,request):
         return render(request, "app/profile.html", locals())
     
+=======
+
+     
+        
+        return redirect("login") 
+
+class ProfileView(View):
+    def  get(self,request):
+        form = CustomerProfileForm()
+        return render(request, 'app/profile.html',locals())
+    def  post(self,request):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            user = form.cleaned_data['user']
+            name = form.cleaned_data['name']
+            locality = form.cleaned_data['locality']
+            city = form.cleaned_data['city']
+            mobile = form.cleaned_data['mobile']
+            state = form.cleaned_data['state']
+            zipcode = form.cleaned_data['zipcode']
+            reg = Customer(user=user,name=name,locality=locality,city=city,mobile=mobile,state=state,zipcode=zipcode)
+            reg.save()
+            messages.success(request,"Congratulations! Profile Save Successfully")
+        else:
+            messages.warning(request,"Invalid Input Data")    
+            
+        return render(request, 'app/profile.html', locals())
+
+def address(request):
+    add = Customer.objects.filter(user=request.user)
+    print(add)
+    return render(request,'app/address.html',locals())   
+
+
+    return render(request, "app/customerregistration.html",locals()) 
+
+    # return render(request, "app/customerregistration.html",locals()) 
+
+
+
+>>>>>>> 91fd0a9b87ecf7b7c14e5f5d6fa9badac7d81187
 class updateAddress(View):   
     def get(self, request,pk):
         add = Customer.objects.get(pk=pk)
