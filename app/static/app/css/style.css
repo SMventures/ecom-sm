@@ -647,3 +647,13 @@ form a{
 .carousel-item img {
   width: 100%;
   height: auto;}
+
+ 
+.btn-light-blue {
+      background-color: #ADD8E6; /* Light Blue */
+      color: #fff; /* Text color */
+  }  
+
+.row h3{
+  font-size: 72px;
+}

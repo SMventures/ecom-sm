@@ -53,6 +53,7 @@ class CustomerRegistrationView(View):
             messages.success(request,"Congratulations!User Registered Successfully")
         else:
             messages.warning(request,"Invalid Input Data")    
+<<<<<<< HEAD
         return redirect("login") 
 
 class ProfileView(View):
@@ -61,6 +62,12 @@ class ProfileView(View):
     def  post(self,request):
         return render(request, "app/profile.html", locals())
     
+=======
+
+     
+        
+        return redirect("login") 
+>>>>>>> 6982bc2455daff704bbd17ab0c05b8f04fd53717
 
 class ProfileView(View):
     def  get(self,request):
@@ -89,8 +96,14 @@ def address(request):
     print(add)
     return render(request,'app/address.html',locals())   
 
+<<<<<<< HEAD
 
 
+=======
+    return render(request, "app/customerregistration.html",locals()) 
+
+    
+>>>>>>> 6982bc2455daff704bbd17ab0c05b8f04fd53717
 class updateAddress(View):   
     def get(self, request,pk):
         add = Customer.objects.get(pk=pk)
@@ -206,9 +219,7 @@ class FAQsView(View):
     def get(self,request):
         return render(request,'app/FAQs.html',locals())
     
-class termsView(View):
-    def get(self,request):
-        return render(request,'app/Terms.html',locals())
+
 
     
     
