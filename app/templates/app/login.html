@@ -17,7 +17,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    {% block main-content %}
     
 </head>
     <body>
@@ -71,8 +70,8 @@
                         <div class="relative inline-block">
                             <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
                             <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                                <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                <a href='/' class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
                             </div>
                         </div>
                         

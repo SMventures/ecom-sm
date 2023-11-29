@@ -6,6 +6,8 @@ from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from . forms import LoginForm
 from .models import Customer
+from django.http import JsonResponse
+from django.db.models import Q
 
 
 # Create your views here.
@@ -23,7 +25,6 @@ class ItemView(View):
 class AccountView(View):
     def get(self,request):
         return render(request,"app/account.html",locals())
-    
 
 class AboutView(View):
     def get(self,request):
@@ -52,8 +53,7 @@ class CustomerRegistrationView(View):
             messages.success(request,"Congratulations!User Registered Successfully")
         else:
             messages.warning(request,"Invalid Input Data")    
-<<<<<<< HEAD
-        return render(request, "app/customerregistration.html",locals()) 
+        return redirect("login") 
 
 class ProfileView(View):
     def  get(self,request):
@@ -61,11 +61,6 @@ class ProfileView(View):
     def  post(self,request):
         return render(request, "app/profile.html", locals())
     
-=======
-
-     
-        
-        return redirect("login") 
 
 class ProfileView(View):
     def  get(self,request):
@@ -95,13 +90,7 @@ def address(request):
     return render(request,'app/address.html',locals())   
 
 
-    return render(request, "app/customerregistration.html",locals()) 
 
-    # return render(request, "app/customerregistration.html",locals()) 
-
-
-
->>>>>>> 91fd0a9b87ecf7b7c14e5f5d6fa9badac7d81187
 class updateAddress(View):   
     def get(self, request,pk):
         add = Customer.objects.get(pk=pk)
@@ -123,10 +112,9 @@ class updateAddress(View):
             messages.warning("Invalid Input data")
 
         return redirect("address")        
-
         return render(request,'app/updateAddress.html',locals())        
 
-def add_to_cart(request): 
+def add_to_cart(request):
     user=request.user
     product_id=request.GET.get('prod_id')
     product = Product.objects.get(id=product_id)
@@ -136,7 +124,83 @@ def add_to_cart(request):
 def show_cart(request):
     user = request.user
     cart = Cart.objects.filter(user=user)
+    amount = 0
+    for p in cart:
+        value = p.quantity * p.product.discounted_price
+        amount = amount + value
+    totalamount = amount + 40
     return render(request, 'app/addtocart.html',locals())
+ 
+ 
+class checkout(View):
+    def get(self,request):
+        user=request.user
+        add=Customer.objects.filter(user=user)
+        return render(request,"app/checkout.html",locals())
+ 
+ 
+ 
+def plus_cart(request):
+    if request.method == 'GET':
+        prod_id=request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity+=1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount = 0
+        for p in cart:
+            value = p.quantity * p.product.discounted_price
+            amount = amount + value
+        totalamount = amount + 40
+        # print(prod_id)
+        data={
+            'quantity':c.quantity,
+            'amount':amount,
+            'totalamount':totalamount
+        }
+        return JsonResponse(data)
+    
+    
+def minus_cart(request):
+    if request.method == 'GET':
+        prod_id=request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity-=1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount = 0
+        for p in cart:
+            value = p.quantity * p.product.discounted_price
+            amount = amount + value
+        totalamount = amount + 40
+        # print(prod_id)
+        data={
+            'quantity':c.quantity,
+            'amount':amount,
+            'totalamount':totalamount
+        }
+        return JsonResponse(data)
+    
+def remove_cart(request):
+    if request.method == 'GET':
+        prod_id=request.GET['prod_id']
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.delete()
+        user = request.user
+        cart = Cart.objects.filter(user=user)
+        amount = 0
+        for p in cart:
+            value = p.quantity * p.product.discounted_price
+            amount = amount + value
+        totalamount = amount + 40
+        # print(prod_id)
+        data={
+            'amount':amount,
+            'totalamount':totalamount
+        }
+        return JsonResponse(data)
 
 class FAQsView(View):
     def get(self,request):

@@ -54,6 +54,7 @@ STATE_CHOICES = (
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
+    Availability = models.TextField(max_length=255, default='In Stock')
     selling_price = models.FloatField()
     discounted_price =models.FloatField()
     description = models.TextField()
@@ -61,7 +62,7 @@ class Product(models.Model):
     # prodapp = models.TextField(default='')
     category = models.CharField(choices=CATEGORY_CHOICES,max_length=2)
     product_image = models.ImageField(upload_to= 'product')
-    def _str_(self):
+    def __str__(self):
         return self.title
     
 class Customer(models.Model):
