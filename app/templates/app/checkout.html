@@ -72,15 +72,15 @@
                 <div class="flex items-center justify-end p-4  text-white">
                     <!-- Your other header content goes here -->
                 
-                    <a href="{% url 'account' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login</a>
+                    <a href="{% url 'customerregistration'%}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
                     <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
                         <i class="fa-regular fa-user rounded-lg p-2"></i>  
                         <div>Welcome ,User</div>
                         <div class="relative inline-block">
                             <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
                             <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                                <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
                             </div>
                         </div>
                         
@@ -121,15 +121,15 @@
                             <i class="fa-solid fa-shopping-bag"></i>
                         </div>
                         <div class="text-xs leading-3">Cart</div>
-                        <div id="cartAmount" class="cartAmount">2</div>
+                        <div id="cartAmount" class="cartAmount"></div>
                     </a>
-                    <i class="nav-item mx-2">
+                    <!-- <i class="nav-item mx-2">
                         <a href="{% url 'login'%}" class="nav-link text-white">Login</a></i>
     
                     <i class="nav-item mx-2">
                             <a href="{% url 'customerregistration'%}" class="nav-link text-white">Registration</a>
                     </i>
-                
+                 -->
                     
                 </div>
                 
