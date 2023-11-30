@@ -123,14 +123,12 @@
             
             
             {% comment %} {% block main-content %} {% endcomment %}
-              <div class="container my-5">
-                <div class="row flex justify-content-between">
-                    <div class="img2 col-lg-5 mt-5">
-                        <img src="{{product.product_image.url}}" class="image col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75" alt="">
-
-                    </div>
-                    <div class="productdetail col-lg-5">
-                        <h1 style="font-family: Georgia; font-size: 50px;">{{product.title}}</h1>
+            <div class="container grid grid-cols-2 px-10 gap-6 mt-8 mb-6">
+                <div class=" bg-gray-100 padding: 10px">
+                    <img src="{{product.product_image.url}}"  class="w-full object-cover" alt= "product" >
+                </div>
+                    <div>
+                       <h1 class="font-medium text-2xl font-bold mt-8 mb-2">{{product.title}}</h1>
                         <div class="flex items-center mb-4">
                             <div class="flex gap-1 text-sm text-yellow-400">
                                 <span><i class="fa-solid fa-star"></i></span>
@@ -141,102 +139,33 @@
                             </div>
                             <div class="text-xs text-gray-500 ml-3">(150 Reviews)</div>
                         </div>
-                        <div class="space-y-2">
-                            <p class="text-gray-800 font-semibold space-x-2">
-                                <span>Availability: </span>
-                                <span class="text-green-600">In Stock</span>
-                            </p>
-                            <p class="space-x-2">
-                                <span class="text-gray-800 font-semibold">Brand: </span>
-                                <span class="text-gray-600">Apex</span>
-                            </p>
-                            <p class="space-x-2">
-                                <span class="text-gray-800 font-semibold">Category: </span>
-                                <span class="text-gray-600">Sofa</span>
-                            </p>
-                            <p class="space-x-2">
-                                <span class="text-gray-800 font-semibold">SKU: </span>
-                                <span class="text-gray-600">BE45VGRT</span>
-                            </p>
-                        </div>
-                        <div class="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
-                            <p class="text-xl text-primary font-semibold">Rs.{{product.discounted_price}}/-</p>
-                            <p class="text-base text-gray-400 line-through">Rs.{{product.selling_price}}/-</p>
-                        </div>
-                        <h5>Rs.{{product.discounted_price}}/-</h5>
-                        <small class="text-decoration-line-through text-muted fs-5"><del>Rs.{{product.selling_price}}/-</small></del>
-                        <br><br><h4>Product Features</h4>
-                        <ul class="fs-5" style="font-family: Rajdhani;">
-                            <li>{{product.description}}</li>
-                        </ul>
-                        
-                        <form action="{% url 'add-to-cart'%}" class="d-inline">
-                            <input type="hidden" name="prod_id" value={{product.id}} />
-                            <div class="pt-4">
-                            </form>
-                    <h3 class="text-sm text-gray-800 uppercase mb-1">Size</h3>
-                    <div class="flex items-center gap-2">
-                        <div class="size-selector">
-                            <input type="radio" name="size" id="size-xs" class="hidden">
-                            <label for="size-xs"
-                                class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">XS</label>
-                        </div>
-                        <div class="size-selector">
-                            <input type="radio" name="size" id="size-sm" class="hidden">
-                            <label for="size-sm"
-                                class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">S</label>
-                        </div>
-                        <div class="size-selector">
-                            <input type="radio" name="size" id="size-m" class="hidden">
-                            <label for="size-m"
-                                class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">M</label>
-                        </div>
-                        <div class="size-selector">
-                            <input type="radio" name="size" id="size-l" class="hidden">
-                            <label for="size-l"
-                                class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">L</label>
-                        </div>
-                        <div class="size-selector">
-                            <input type="radio" name="size" id="size-xl" class="hidden">
-                            <label for="size-xl"
-                                class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">XL</label>
-                        </div>
 
-                    </div>
-                    <div class="pt-4">
-                        <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Color</h3>
-                        <div class="flex items-center gap-2">
-                            <div class="color-selector">
-                                <input type="radio" name="color" id="red" class="hidden">
-                                <label for="red"
-                                    class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
-                                    style="background-color: #fc3d57;"></label>
-                            </div>
-                            <div class="color-selector">
-                                <input type="radio" name="color" id="black" class="hidden">
-                                <label for="black"
-                                    class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
-                                    style="background-color: #000;"></label>
-                            </div>
-                            <div class="color-selector">
-                                <input type="radio" name="color" id="white" class="hidden">
-                                <label for="white"
-                                    class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
-                                    style="background-color: #fff;"></label>
-                            </div>
-        
+                        <div class=" space-y-2t flex items-baseline mb-1 space-x-2 font-roboto mt-6">
+                            <p class="text-sm text-primary font-semibold">Availability:</p>
+                            <p class="text-sm text-green-600">Rs.{{product.Availability}}</p>
                         </div>
-                    </div>
-        
-                    <div class="mt-4">
-                        <h3 class="text-sm text-gray-800 uppercase mb-1">Quantity</h3>
-                        <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-                            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">-</div>
-                            <div class="h-8 w-8 text-base flex items-center justify-center">4</div>
-                            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">+</div>
+                            
+                        
+                        <div class=" flex items-baseline mb-1 space-x-2 font-roboto mt-8">
+                            <p class="text-sm text-primary font-semibold">Rs.{{product.discounted_price}}/-</p>
+                            <p class="text-sm text-gray-400 line-through">Rs.{{product.selling_price}}/-</p>
                         </div>
-                    </div>
-                </div>
+                      <div></div>
+                        <h3 class="space-y-2t text-xl text-black font-bold font-roboto mt-10 mb-1">Product details </h3>
+                             <div class="flex items-center gap-2">
+                        <p class="text-gray-800 font-roboto mt-4 text-sm">
+                            {{product.description}}
+                        </p>
+                        </div>
+                        <div class="flex gap-5">
+                            <form action="/add-to-cart" class="flex text-white items-center">
+                                <input type="hidden" name="prod_id" value="{{product.id}}" />
+                                <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 hover:underline text-white">Add to Cart</button>
+                            </form>
+                            <button type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 hover:underline text-white">Buy Now</button>
+                        </div>
+                        
+            </div>
     
             
     
@@ -244,15 +173,7 @@
     
           
         <!-- ./product-detail -->
-        <div class="flex flex-row gap-5">
-            <form action="/add-to-cart" class="d-inline">
-                <input type="hidden" name="prod_id" value={{product.id}} />
-                <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
-            </form>
-          <button type="submit" style="background-color:red" class="btn btn-primary shadow px-5 py-2">Buy Now</button></a>
-                
         
-        </div>
                           
                         
                     </div>
@@ -265,136 +186,138 @@
            
        
     
-       <!----------------------------------footer--------------------------->
-       <div class="flex items-end w-full min-h-screen bg-white">
+        <!----------------------------------footer--------------------------->
+        <div class="flex items-end w-full min-h-screen bg-white">
 
-        <footer class="w-full text-gray-700 bg-gray-100 body-font">
-            <div
-                class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
-                <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-                
-                    <a class="flex items-center justify-center font-bold  text-blue-700 title-font md:justify-start font-caveat text-2xl">
-                        Digital Dalal Street
-                    </a>
+            <footer class="w-full text-white bg-gray-800 body-font">
+                <div
+                    class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+                    <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
                     
-                    <p class="mt-2 text-sm text-gray-500">Seamless Trading, Limitless Shopping.</p>
-                    <div class="mt-4">
-                        <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                            <a class="text-gray-500 cursor-pointer hover:text-gray-700">
-                                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                </svg>
-                            </a>
-                            <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                                </svg>
-                            </a>
-                            <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700" href="#">
-                                <!-- WhatsApp Icon with increased size and margin -->
-                                <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
-                            </a>
-                            
-                            
-                            
-                            <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700" href="#">
-                                <!-- Gmail Icon with increased size -->
-                                <i class="far fa-envelope fa-lg"></i>
-                            </a>
-                            
-                            
-                        </span>
-                    </div>
-                    
-                </div>
-                <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
-
-                    <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                        <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
-                    
-                        <ul class="list-none">
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">Company</a>
-                            </li>
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">Products</a>
-                            </li>
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">Team</a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                   
-                    <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                        <h2 class="mb-3 text-sm font-medium tracking-widest font-bold text-gray-900 uppercase title-font">Support</h2>
-
-                        </h2>
-                        <ul class="list-none">
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">Terms &amp; Privacy</a>
-                            </li>
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">Pricing</a>
-                            </li>
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">FAQ</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                        <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
-                        <ul class="list-none">
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">Send a Message</a>
-                            </li>
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">email us</a>
-                            </li>
-                            <li class="mt-3">
-                                <a class="text-gray-500 cursor-pointer hover:text-gray-900">7982406738
-                                                                                            ,8448640308
+                        <a class="flex items-center justify-center font-bold  text-white title-font md:justify-start font-caveat text-2xl">
+                            Digital Dalal Street
+                        </a>
+                        
+                        <p class="mt-2 text-sm text-white">Seamless Trading, Limitless Shopping.</p>
+                        <div class="mt-4">
+                            <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+                                <a class="text-white cursor-pointer hover:text-gray-700>
+                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                    </svg>
                                 </a>
-                            </li>
-                        </ul>
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700">
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="https://wa.me/8448640308?text=Hello">
+                                    <!-- WhatsApp Icon with increased size and margin -->
+                                    <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
+                                </a>
+                                
+                                
+                                
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">
+                                    <!-- Gmail Icon with increased size -->
+                                    <i class="far fa-envelope fa-lg"></i>
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
+
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
+                        
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Company</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Products</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                       
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm text-white font-medium tracking-widest font-bold uppercase title-font">Support</h2>
+
+                            </h2>
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a href="{% url 'terms' %}" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
+                                </li>
+                                
+                                <li class="mt-3">
+                                    <a href= "{% url 'FAQs' %}" class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                          <section id="contactUsSection">
+                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                         
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Call us
+                                    </a>
+                                </li>
+                            </ul>
+                               
+                         </section>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-gray-300">
-                <div class="container px-5 py-4 mx-auto">
-                    <p class="text-sm text-gray-700 capitalize xl:text-center">© 2023 All rights reserved </p>
+                <div class="bg-blue-800">
+                    <div class="container px-5 py-4 mx-auto">
+                        <p class="text-sm text-white capitalize xl:text-center">© 2023 All rights reserved </p>
+                    </div>
                 </div>
-            </div>
-        </footer>
-    
-    </div>
-    <!-------------------------------------js for toggle menu-------------------------------------->
+            </footer>
+        
+        </div>
+        <!-------------------------------------js for toggle menu-------------------------------------->
 
-    <script>
-        const userIcon = document.getElementById('userIcon');
-        const dropdown = document.getElementById('dropdown');
-    
-        userIcon.addEventListener('click', () => {
-            dropdown.classList.toggle('hidden');
-        });
-    
-        document.addEventListener('click', (event) => {
-            if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
-                dropdown.classList.add('hidden');
-            }
-        });
-    </script>
-    
- 
-</body>
-
-<script scr="{% static 'app/js/owl.carousel.min.js' %}"></script>
-<script scr="{% static 'app/js/all.min.js' %}"></script>
-<script src="{% static 'app/js/Data.js' %}"></script>
-<script src="{% static 'app/js/main.js' %}"></script>
-<script src="../../static/app/js/myscript.js"></script>  
+        <script>
+            const userIcon = document.getElementById('userIcon');
+            const dropdown = document.getElementById('dropdown');
+        
+            userIcon.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden');
+            });
+        
+            document.addEventListener('click', (event) => {
+                if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        </script>
+     
+    </body>
+    <script script="../..static/app/js/owl.carousel.min.js %"></script>
+    <script script="../..static/app/js/all.min.js"></script>
+    <script src="../../static/app/js/Data.js %"></script>
+    <script src="../../static/app/js/main.js"></script> 
 
 </html>

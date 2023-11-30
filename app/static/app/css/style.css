@@ -657,3 +657,7 @@ form a{
 .row h3{
   font-size: 72px;
 }
+
+.btn:hover {
+        background-color: #ccc; /* Change this to the desired hover background color */
+    }

@@ -97,7 +97,8 @@
                         </div>
                     </li>
                     <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
-                    <li><a href="#contact" class="text-white cursor-pointer hover:underline">Contact us</a></li> 
+                    <li><a href="#contactUsSection" class="text-white cursor-pointer hover:underline">Contact us</a></li> 
+                        
 
                 </ul>
                 <div class="flex items-center space-x-4 ml-auto pr-8">
@@ -127,24 +128,37 @@
     <div class="overflow-hidden" data-glide-el="track">
         <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap">
             <li class="glide__slide"><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" />
-            <li class="glide__slide"><img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" />
-                <a href="{% url 'category' 'EC' %}"></a></li>
-                <a href="{% url 'category' 'BK' %}"><li class="glide__slide"><img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'category' 'EC' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                     </li>
+                </a>
+
+                <a href="{% url 'category' 'BK' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" />
                     </li>
                 </a>
-          
-            <li class="glide__slide"><img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" />
-                <a href="{% url 'category' 'AR' %}"></a></li>
-            <li class="glide__slide"><img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" />
-                <a href="{% url 'category' 'SI' %}">
-
+                
+                <a href="{% url 'category' 'AR' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                   </li>
                 </a>
-            </li>
-            <li class="glide__slide"><img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" />
+            
+                <a href="{% url 'category' 'SI' %}">    
+                     <li class="glide__slide">
+                        <img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" />
+                     </li>
+                </a>
+           
                 <a href="{% url 'category' 'MC' %}">
 
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" />
+                    </li>
                 </a>
-            </li>
+                    
         </ul>
     </div>
     <!-- Indicators -->
@@ -1102,7 +1116,9 @@
                             </ul>
                         </div>
                         <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                          <section id="contactUsSection">
                             <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                         
                             <ul class="list-none">
                                 <li class="mt-3">
                                     <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
@@ -1115,6 +1131,8 @@
                                     </a>
                                 </li>
                             </ul>
+                               
+                         </section>
                         </div>
                     </div>
                 </div>
