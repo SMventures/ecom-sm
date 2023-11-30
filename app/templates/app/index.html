@@ -35,10 +35,6 @@
                 }
             }
         </script>
-       
-<div class="flex items-center justify-end p-4 text-white">
-    <!-- Your other header content goes here -->
-   
         <div class="">
             
             <header class="py-4 shadow-sm bg-white">
@@ -63,30 +59,35 @@
                     <button
                         class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
                 </div>
-                
-                <div class="flex items-center justify-end p-4  text-white">
+                <div class="flex items-center justify-end p-4 text-white">
                     <!-- Your other header content goes here -->
-                     
-                    <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
-                        <i class="fa-regular fa-user rounded-lg p-2"></i>  
-                           <div class="relative inline-block">
-
-                            <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
-                            <h3>Welcome {{request.user}}</h3>
-                            <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
-                              
-                                <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
-                                <a href="/" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
-                            </div>
-                        </div>
-                        
-                    </div>
                     
-                    <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
-                  
-                 
+                    <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'profile' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">
+                                Welcome, {{ user.username }}
+                            </a>
+                        </div>
+                            <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                            <div class="relative inline-block">
+                                <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                                <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                                    <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                
+                    <!-- Your other header content goes here -->
+                   
                     
                 </div>
+            </div>
                 
             </header>    
             
@@ -105,7 +106,8 @@
                         </div>
                     </li>
                     <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
-                    <li><a href="#contact" class="text-white cursor-pointer hover:underline">Contact us</a></li> 
+                    <li><a href="#contactUsSection" class="text-white cursor-pointer hover:underline">Contact us</a></li> 
+                        
 
                 </ul>
                 <div class="flex items-center space-x-4 ml-auto pr-8">
@@ -135,24 +137,37 @@
     <div class="overflow-hidden" data-glide-el="track">
         <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap">
             <li class="glide__slide"><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" />
-            <li class="glide__slide"><img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" />
-                <a href="{% url 'category' 'EC' %}"></a></li>
-                <a href="{% url 'category' 'BK' %}"><li class="glide__slide"><img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'category' 'EC' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                     </li>
+                </a>
+
+                <a href="{% url 'category' 'BK' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" />
                     </li>
                 </a>
-          
-            <li class="glide__slide"><img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" />
-                <a href="{% url 'category' 'AR' %}"></a></li>
-            <li class="glide__slide"><img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" />
-                <a href="{% url 'category' 'SI' %}">
-
+                
+                <a href="{% url 'category' 'AR' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                   </li>
                 </a>
-            </li>
-            <li class="glide__slide"><img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" />
+            
+                <a href="{% url 'category' 'SI' %}">    
+                     <li class="glide__slide">
+                        <img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" />
+                     </li>
+                </a>
+           
                 <a href="{% url 'category' 'MC' %}">
 
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" />
+                    </li>
                 </a>
-            </li>
+                    
         </ul>
     </div>
     <!-- Indicators -->
@@ -232,7 +247,7 @@
             <img src="../../static/app/images/product/delivery-van.svg" alt="Delivery" class="w-12 h-12 object-contain">
             <div>
                 <h4 class="font-medium capitalize text-lg">Free Shipping</h4>
-                <p class="text-gray-500 text-sm">Order over $200</p>
+                <p class="text-gray-500 text-sm">Order over ₹999</p>
             </div>
         </div>
         <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
@@ -1097,7 +1112,7 @@
                             </h2>
                             <ul class="list-none">
                                 <li class="mt-3">
-                                    <a href="#" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+                                    <a href="{% url 'terms' %}" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
                                 </li>
                                 <li class="mt-3">
                                     <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
@@ -1110,7 +1125,9 @@
                             </ul>
                         </div>
                         <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                          <section id="contactUsSection">
                             <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                         
                             <ul class="list-none">
                                 <li class="mt-3">
                                     <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
@@ -1119,11 +1136,12 @@
                                     <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
                                 </li>
                                 <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">Ph no. 7982406738
-                                                                                                     8448640308
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Call us
                                     </a>
                                 </li>
                             </ul>
+                               
+                         </section>
                         </div>
                     </div>
                 </div>

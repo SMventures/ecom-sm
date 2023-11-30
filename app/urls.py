@@ -18,8 +18,8 @@ urlpatterns = [
 
     path("checkout/", views.show_cart,name="checkout"),
     path("FAQs/", views.FAQsView.as_view(), name="FAQs" ),
-   #path("terms/",views.termsView.as_view(), name="terms"),
-   path("profile/", views.ProfileView.as_view(), name="profile"),
+    path("terms/",views.termsView.as_view(), name="terms"),
+    path("profile/", views.ProfileView.as_view(), name="profile"),
 
 
     path("checkout/", views.show_cart,name="checkout"),
@@ -47,15 +47,6 @@ urlpatterns = [
     path('password-reset/done/', auth_view.PasswordResetView.as_view(template_name='app/password_reset_done.html',form_class=MyPasswordResetForm),name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', auth_view.PasswordResetView.as_view(template_name='app/password_reset_confirm.html',form_class=MyPasswordResetForm),name='password_reset_confirm'),
     path('password-reset-complete/', auth_view.PasswordResetView.as_view(template_name='app/password_reset_complete.html',form_class=MyPasswordResetForm),name='password_reset_complete'),
-    
-
-
-
-    path("FAQs/", views.FAQsView.as_view(), name="FAQs" ),
-
-
-    path("FAQs/", views.FAQsView.as_view(), name="FAQs" ),
-
 
     path("profile/", views.ProfileView.as_view(), name="profile"),
 
