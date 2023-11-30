@@ -6,6 +6,7 @@ from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from . forms import LoginForm
 from .models import Customer
+from django.contrib.auth import views as auth_views
 
 
 # Create your views here.
@@ -84,7 +85,7 @@ def address(request):
     print(add)
     return render(request,'app/address.html',locals())   
 
-    return render(request, "app/customerregistration.html",locals()) 
+   
 
     
 class updateAddress(View):   
@@ -127,7 +128,6 @@ class FAQsView(View):
     def get(self,request):
         return render(request,'app/FAQs.html',locals())
     
-
 
     
     
