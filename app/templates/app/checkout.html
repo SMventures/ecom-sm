@@ -133,46 +133,51 @@
             {% endif %}
             <div class="row mt-5">
                 <div class="col-sm-6">
-                    <h4>Order Summary</h4>
+                    <!-- <h4>Order Summary</h4> -->
+                    <u><b><h4 class="flex items-center justify-center mb-4 " style="font-size: 30px;">Order Summary</h4></b></u>
                     <hr>
                     {% for item in cart_items %}
                         <div class="card mb-2">
                             <div class="card-body">
-                                <h5>Product: {{item.product.title}}</h5>
-                                <p>Quantity: {{item.quantity}}</p>
-                                <p class="fw-bold">Price:{{item.product.discounted_price}}</p>
+                                <u><b><h5>Product: {{item.product.title}}</h5></b></u>
+                                <b><p>Quantity: {{item.quantity}}</p></b>
+                                <b><p class="fw-bold">Price:{{item.product.discounted_price}}</p></b>
+                                <br>
                             </div>
                         </div>
                     {% endfor %}
-                    <p class="fw-bold">Total Cost + Rs. 40 = {{totalamount}} </p>
-                    <small>Term and Condition :Lorem</small>
+                    <b class="fw-bold"  style="font-size: 20px;">Total Cost + Rs. 40 = {{totalamount}} </b>
+                    <br>
+                    <!-- <small>keep shopping</small> -->
                 </div>
                 <div class="col-sm-4 offset-sm-1">
-                    <h4>Select Shipping Address</h4>
+                    <!-- <h4>Select Shipping Address</h4> -->
+                    <u><b><h4 class="flex items-center justify-center mb-4 " style="font-size: 30px;">Order Summary</h4></b></u>
                     <hr>
                     <form method="post" id="myform">
                         {% csrf_token %}
                         {% for ad in add %}
                         <div class="card">
                             <div class="card-body">
-                            <h5>{{ad.name}}</h5>
-                            <p>Mobile : {{ad.mobile}}</p>
-                            <p>{{ad.locality}} {{ad.city}} {{ad.state}} - {{ad.zipcode}}</p>
+                            <b><h5>{{ad.name}}</h5></b>
+                            <b><p>Mobile : {{ad.mobile}}</p></b>
+                            <b><p>{{ad.locality}} {{ad.city}} {{ad.state}} - {{ad.zipcode}}</p></b>
                             </div>
                         </div>
                             <div class="form-check mt-2 mb-5">
-                                <input class="form-check-input" type="radio" name="custid{{forloop.counter}}" value="{{ad.id}}">
-                                <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">Address:{{forloop.counter}} </label>
+                                <input class="form-check-input" type="radio" name="custid" id="custadd{{forloop.counter}}" value="{{ad.id}}">
+                                <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}"><b>Address:{{forloop.counter}}</b> </label>
                             </div>
+                            <hr>
                         {% endfor %}
                             <div class="form-check mb-3">
-                                <label for="totalamount" class="form-label">Total Amount</label>
-                                <input type="number" class="form-control" name="totalamount" value="{{totalamount}}" readonly>    
+                                <b><label for="totalamount" class="form-label">Total Amount</label></b>
+                                <b><input type="number" class="form-control" name="totalamount" value="{{totalamount}}" readonly> </b>   
                             </div>
                             <div class="text-end">
-                                <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+                                <!-- <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button> -->
                                     <!-- <div id="paypal-button-container"></div> -->
-                                <!-- <button id="rzp-button1" type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Payment</button> -->
+                                <button id="rzp-button1" type="submit" class="btn btn-warning mt-3 px-5 fw-bold  hover:underline text-center text-white hover:text-primary transition relative mr-3 "  style="background-color: rgb(71, 71, 190); "">Payment</button>
                             </div>
                     </form>
                 </div>
