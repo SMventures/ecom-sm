@@ -60,30 +60,25 @@
                         class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
                 </div>
                 
-                <div class="flex items-center justify-end p-4 text-white">
+                <div class="flex items-center justify-end p-4  text-white">
                     <!-- Your other header content goes here -->
-                    
+                
+                    <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
                     <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'profile' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">
-                                Welcome, {{ user.username }}
-                            </a>
-                        </div>
-                            <i class="fa-regular fa-user rounded-lg p-2"></i>  
-                            <div class="relative inline-block">
-                                <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
-                                <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
-                                    <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
-                                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
-                                </div>
+                        <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                        <div>Welcome ,User</div>
+                        <div class="relative inline-block">
+                            <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                            <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                                <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                <a href='/' class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
                             </div>
-                        {% else %}
-                            <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
-                        {% endif %}
+                        </div>
+                        
                     </div>
+                 
+                    
                 </div>
-                
-                
                 
             </header>    
             
@@ -127,9 +122,13 @@
                 
             </nav>
 <<<<<<< HEAD
+<<<<<<< HEAD
      {%block main-content%}       
 =======
 >>>>>>> 144e1cd (merging)
+=======
+     {%block main-content%}       
+>>>>>>> 07c31ee (commit all the recent chnages including images)
   <div class="container">
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -176,6 +175,8 @@
 
 
 
+
+{%endblock main-content%}
 
 
 
@@ -241,6 +242,7 @@
                     <ul class="list-none">
                         <li class="mt-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <a class="text-white cursor-pointer hover:text-gray-900">Company</a>
                         </li>
                         <li class="mt-3">
@@ -251,6 +253,12 @@
                         <li class="mt-3">
                             <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Products</a>
 >>>>>>> 144e1cd (merging)
+=======
+                            <a class="text-white cursor-pointer hover:text-gray-900">Company</a>
+                        </li>
+                        <li class="mt-3">
+                            <a class="text-white cursor-pointer hover:text-gray-700">Products</a>
+>>>>>>> 07c31ee (commit all the recent chnages including images)
                         </li>
                         <li class="mt-3">
                             <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
@@ -266,14 +274,19 @@
                     <ul class="list-none">
                         <li class="mt-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <a class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
 =======
                             <a href="{% url 'terms' %}" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
 >>>>>>> 144e1cd (merging)
+=======
+                            <a class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+>>>>>>> 07c31ee (commit all the recent chnages including images)
                         </li>
                         <li class="mt-3">
                             <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
                         </li>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <li class="mt-3">
                             <a class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
@@ -284,17 +297,20 @@
                     <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
 =======
                         
+=======
+>>>>>>> 07c31ee (commit all the recent chnages including images)
                         <li class="mt-3">
-                            <a href= "{% url 'FAQs' %}" class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                            <a class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
                         </li>
-                        
                     </ul>
                 </div>
                 <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                  <section id="contactUsSection">
                     <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+<<<<<<< HEAD
                  
 >>>>>>> 144e1cd (merging)
+=======
+>>>>>>> 07c31ee (commit all the recent chnages including images)
                     <ul class="list-none">
                         <li class="mt-3">
                             <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
@@ -303,6 +319,7 @@
                             <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
                         </li>
                         <li class="mt-3">
+<<<<<<< HEAD
 <<<<<<< HEAD
                             <a class="text-white cursor-pointer hover:text-gray-700">Ph no. 7982406738
                                                                                              8448640308
@@ -317,6 +334,13 @@
                        
                  </section>
 >>>>>>> 144e1cd (merging)
+=======
+                            <a class="text-white cursor-pointer hover:text-gray-700">Ph no. 7982406738
+                                                                                             8448640308
+                            </a>
+                        </li>
+                    </ul>
+>>>>>>> 07c31ee (commit all the recent chnages including images)
                 </div>
             </div>
         </div>
@@ -352,7 +376,11 @@
 <script src="../../static/app/js/main.js"></script> 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 </html>
 =======
 </html>
 >>>>>>> 144e1cd (merging)
+=======
+</html>
+>>>>>>> 07c31ee (commit all the recent chnages including images)

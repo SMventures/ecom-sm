@@ -6,7 +6,6 @@ from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from . forms import LoginForm
 from .models import Customer
-from django.contrib.auth import views as auth_views
 from django.http import JsonResponse
 from django.db.models import Q
 
@@ -89,7 +88,6 @@ class ProfileView(View):
             
         return render(request, 'app/profile.html', locals())
 
-  
 def address(request):
     add = Customer.objects.filter(user=request.user)
     print(add)
@@ -98,11 +96,6 @@ def address(request):
 
 
     return render(request, "app/customerregistration.html",locals()) 
-
-    
-
-
-  
 
     
 class updateAddress(View):   
@@ -150,12 +143,6 @@ class checkout(View):
     def get(self,request):
         user=request.user
         add=Customer.objects.filter(user=user)
-        cart_items=Cart.objects.filter(user=user)
-        famount = 0
-        for p in cart_items:
-            value = p.quantity * p.product.discounted_price
-            famount = famount + value
-        totalamount = famount + 100
         return render(request,"app/checkout.html",locals())
  
  
@@ -230,26 +217,6 @@ class termsView(View):
     def get(self,request):
         return render(request,'app/terms.html',locals())
 
-
-
-
-
-                   # <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
-                       # <i class="fa-regular fa-user rounded-lg p-2"></i>  
-                        #<div>Welcome ,User</div>
-                        #<div class="relative inline-block">
-                         #   <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
-                          #  <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
-                           #     <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
-                            #    <a href='/' class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
-                            #</div>
-                        #</div>
-                        
-                    #</div>
-                    #<a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
-                 
-                    
-                #</div>#
     
     
     
