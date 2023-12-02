@@ -136,7 +136,7 @@
                         <div class="row">
                             {% for prod in product %} 
                                 <div class="col text-center mb-4 ">
-                                    <a href="{% url 'product-detail' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-6 pt-10">
+                                    <a href="{% url 'product-detail' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
                                     <div class="">
                                         <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80"/>
                                         <div class="fw-bold">{{prod.title}}</div>
