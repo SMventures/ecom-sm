@@ -60,27 +60,30 @@
                         class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
                 </div>
                 
-                <div class="flex items-center justify-end p-4  text-white">
-                    <!-- Your other header content goes here -->
-                
-                    <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
-                    <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'profile' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">
+                            Welcome, {{ user.username }}
+                        </a>
+                    </div>
                         <i class="fa-regular fa-user rounded-lg p-2"></i>  
-                        <div>Welcome ,User</div>
                         <div class="relative inline-block">
                             <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
                             <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
                                 <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
-                                <a href='/' class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                                <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
                             </div>
                         </div>
-                        
-                    </div>
-                 
+                    {% else %}
+                        <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
+                    {% endif %}
+                </div>
+       
                     
                 </div>
+            </div>
                 
-            </header>    
+            </header> 
             
             <nav class="flex items-center justify-start bg-blue-800 text-white">
                 <ul class="flex space-x-4">
