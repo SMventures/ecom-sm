@@ -135,18 +135,33 @@
                     <div class="col-sm-9">
                         <div class="row">
                             {% for prod in product %} 
+                            
                                 <div class="col text-center mb-4 ">
                                     <a href="{% url 'product-detail' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
                                     <div class="">
-                                        <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80"/>
+                                        
+                                        <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80">
                                         <div class="fw-bold">{{prod.title}}</div>
                                         <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
-                                            <small class="fw-light text-decoration-line-through">{{prod.selling_price}}</small>
+                                            <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                                            
                                         </div>
-                                        <form action="/add-to-cart" class="d-inline">
-                                            <input type="hidden" name="prod_id" value={{prod.id}} />
-                                            <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
-                                        </form>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form action="/add-to-cart" class="d-inline">
+                                                    <input type="hidden" name="prod_id" value={{prod.id}} />
+                                                    <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white">Add to Cart</button>
+                                                </form>
+                                            </div>
+                                            <form action="/add-to-wishlist" class="d-inline">
+                                                <input type="hidden" name="prod_id" value="{{ prod.id }}" />
+                                                <button type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 text-white">
+                                                    <i class="fa-solid fa-heart"></i> Wishlist
+                                                </button>
+                                            </form>
+                                        </div>
+                                        
                                     </div>
                                     </a>
                                 </div>

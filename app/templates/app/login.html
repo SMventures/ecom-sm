@@ -124,10 +124,10 @@
 
 
 
-
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-            
+            {% block main-content %}
+ 
         <div class="container">
           <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -136,11 +136,7 @@
                 </div>
             <div class="row my-3">
                 <div class="col-sm-6 offset-sm-3">
-                    <div class="col-sm-6 offset-sm-3">
-                        <p class="text-gray-600 mb-6 text-center">
-                            Welcome back, customer!
-                        </p>
-                    </div>
+                    
                  
                     <hr class="my-4">
                     <form action="" method="post" novalidate class="shadow p-5">
@@ -174,17 +170,13 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
        
         
-        
+        {% endblock main-content %}
 
 
->>>>>>> 144e1cd (merging)
-=======
->>>>>>> 07c31ee (commit all the recent chnages including images)
+
        <!----------------------------------footer--------------------------->
        <div class="flex items-end w-full min-h-screen bg-white">
 

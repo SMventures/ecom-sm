@@ -124,27 +124,13 @@
             
             {% comment %} {% block main-content %} {% endcomment %}
             <div class="container grid grid-cols-2 px-10 gap-6 mt-8 mb-6">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <div class="px-10 w-auto h-auto py-8 px-8 flex items-center">
-                    <img src="{{product.product_image.url}}"  class="w-full h-96 object-contain  justify-centre" alt= "product" >
+               
+                <div class="  py-8 px-6 bg-gray-100 w-auto h-auto items-center">
+                    <img src="{{product.product_image.url}}"  class="w-full h-96 object-contain items-center" alt= "product" >
                 </div>
                     <div class="px-12">
                        <h1 class=" text-2xl font-bold mt-8 mb-2">{{product.title}}</h1>
-=======
-                <div class=" bg-gray-100 padding: 10px">
-                    <img src="{{product.product_image.url}}"  class="w-full object-cover" alt= "product" >
-                </div>
-                    <div>
-                       <h1 class="font-medium text-2xl font-bold mt-8 mb-2">{{product.title}}</h1>
->>>>>>> 144e1cd (merging)
-=======
-                <div class="px-10 w-auto h-auto py-8 px-8 flex items-center">
-                    <img src="{{product.product_image.url}}"  class="w-full h-96 object-contain  justify-centre" alt= "product" >
-                </div>
-                    <div class="px-12">
-                       <h1 class=" text-2xl font-bold mt-8 mb-2">{{product.title}}</h1>
->>>>>>> 07c31ee (commit all the recent chnages including images)
+                  
                         <div class="flex items-center mb-4">
                             <div class="flex gap-1 text-sm text-yellow-400">
                                 <span><i class="fa-solid fa-star"></i></span>
@@ -167,15 +153,7 @@
                             <p class="text-sm text-gray-400 line-through">Rs.{{product.selling_price}}/-</p>
                         </div>
                       <div></div>
-<<<<<<< HEAD
-<<<<<<< HEAD
                         <h3 class="space-y-2t text-xl text-black font-semibold font-roboto mt-10 mb-1">Product details </h3>
-=======
-                        <h3 class="space-y-2t text-xl text-black font-bold font-roboto mt-10 mb-1">Product details </h3>
->>>>>>> 144e1cd (merging)
-=======
-                        <h3 class="space-y-2t text-xl text-black font-semibold font-roboto mt-10 mb-1">Product details </h3>
->>>>>>> 07c31ee (commit all the recent chnages including images)
                              <div class="flex items-center gap-2">
                         <p class="text-gray-800 font-roboto mt-4 text-sm">
                             {{product.description}}
