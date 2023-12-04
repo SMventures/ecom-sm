@@ -147,7 +147,7 @@
 
                         <div class=" space-y-2t flex items-baseline mb-1 space-x-2 font-roboto mt-6">
                             <p class="text-sm text-primary font-semibold">Availability:</p>
-                            <p class="text-sm text-green-600">Rs.{{product.Availability}}</p>
+                            <p class="text-sm text-green-600">{{product.Availability}}</p>
                         </div>
                             
                         
@@ -168,8 +168,8 @@
                                 <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 hover:underline text-white">Add to Cart</button>
                             </form>
                             <button type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 hover:underline text-white">Buy Now</button>
-                        </div>
-                        
+                            
+                       </div> 
             </div>
     
             
@@ -324,5 +324,6 @@
     <script script="../..static/app/js/all.min.js"></script>
     <script src="../../static/app/js/Data.js %"></script>
     <script src="../../static/app/js/main.js"></script> 
+    <script src="{% static 'app/js/myscript.js' %}"></script>
 
 </html>
