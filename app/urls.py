@@ -7,14 +7,18 @@ from .forms import LoginForm,MyPasswordResetForm,MyPasswordChangeForm,MySetPassw
 urlpatterns = [
   
     path("",views.home),
+    # path("cart", views.CartView.as_view(),name="cart"),
     # path("item", views.ItemView.as_view(),name="item"),
-    path("account", views.AccountView.as_view(),name="account"),
+    # path("account", views.AccountView.as_view(),name="account"),
     path("about", views.AboutView.as_view(),name="about"),
     path("category/<slug:val>", views.CategoryView.as_view(),name="category"),
     path("product-detail/<int:pk>", views.ProductDetail.as_view(),name="product-detail"),
     path("add-to-cart/", views.add_to_cart,name="add-to-cart"),
     path("cart/", views.show_cart,name="showcart"),
     path("checkout/", views.checkout.as_view(),name="checkout"),
+    
+    path("search/", views.search,name="search"),
+    
     
     path("pluscart/", views.plus_cart),
     path("minuscart/", views.minus_cart),

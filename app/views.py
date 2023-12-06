@@ -8,56 +8,73 @@ from . forms import LoginForm
 from .models import Customer
 from django.http import JsonResponse
 from django.db.models import Q
-
-
-from django.db.models import Count
-from django.shortcuts import render, redirect
-from django.views import View
-from . models import Product, Cart
-from . forms import CustomerRegistrationForm, CustomerProfileForm
-from django.contrib import messages
-from . forms import LoginForm
-from .models import Customer
 from django.contrib.auth import views as auth_views
-from django.http import JsonResponse
-from django.db.models import Q
- 
- 
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+
 # Create your views here.
+
 def home(request):
     return render(request,"app/index.html")
  
-class CartView(View):
-    def get(self,request):
-        return render(request,"app/cart.html",locals())
+# class CartView(View):
+#     def get(self,request):
+#         return render(request,"app/cart.html",locals())
+#     totalitem = 0
+#     if request.user.is_authenticated:
+#         totalitem = len(Cart.objects.filter(user=request.user))
+#     return render(request,"app/index.html",locals())
+
+# class CartView(View):
+#     def get(self,request):
+#         return render(request,"app/cart.html",locals())
     
-class ItemView(View):
-    def get(self,request):
-        return render(request,"app/item.html",locals())
     
 class AccountView(View):
     def get(self,request):
         return render(request,"app/account.html",locals())
  
+# class AccountView(View):
+#     def get(self,request):
+#         return render(request,"app/account.html",locals())
+
+
+
 class AboutView(View):
     def get(self,request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request,"app/about.html",locals())
-    
+
 class ProductDetail(View):
     def get(self,request,pk):
         product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request,"app/productdetail.html",locals())
     
-    
+
 class CategoryView(View):
     def get(self,request,val):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product= Product.objects.filter(category=val)
         title = Product.objects.filter(category=val).values('title')
         return render(request,"app/category.html",locals())
  
+    
+
 class CustomerRegistrationView(View):
     def get(self,request):
         form = CustomerRegistrationForm()
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request,"app/customerregistration.html",locals())  
     def post(self,request):
         form = CustomerRegistrationForm(request.POST)
@@ -68,6 +85,9 @@ class CustomerRegistrationView(View):
             messages.warning(request,"Invalid Input Data")    
         return redirect("login")
  
+        return redirect("login") 
+
+# @method_decorator(login_required,name='dispatch')
 class ProfileView(View):
     def  get(self,request):
         return render(request, "app/profile.html",locals())
@@ -79,9 +99,15 @@ class ProfileView(View):
         
         return redirect("login")
  
+        return redirect("login") 
+
+@method_decorator(login_required,name='dispatch')
 class ProfileView(View):
     def  get(self,request):
         form = CustomerProfileForm()
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request, 'app/profile.html',locals())
     def  post(self,request):
         form = CustomerProfileForm(request.POST)
@@ -102,24 +128,39 @@ class ProfileView(View):
         return render(request, 'app/profile.html', locals())
  
   
+
+@login_required
 def address(request):
     add = Customer.objects.filter(user=request.user)
-    print(add)
+    # print(add)
+    totalitem = 0
+    if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
     return render(request,'app/address.html',locals())   
  
  
  
  
+
+
+
+    # return render(request, "app/customerregistration.html",locals()) 
+
     
  
  
   
  
     
+
+# @method_decorator(login_required,name='dispatch')
 class updateAddress(View):   
     def get(self, request,pk):
         add = Customer.objects.get(pk=pk)
         form = CustomerProfileForm(instance=add)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request,'app/updateAddress.html',locals())
     def post(self,request,pk):
         form = CustomerProfileForm(request.POST)
@@ -139,6 +180,9 @@ class updateAddress(View):
         return redirect("address")        
         return render(request,'app/updateAddress.html',locals())        
  
+        # return render(request,'app/updateAddress.html',locals())        
+
+@login_required
 def add_to_cart(request):
     user=request.user
     product_id=request.GET.get('prod_id')
@@ -146,6 +190,8 @@ def add_to_cart(request):
     Cart(user=user,product=product).save()
     return redirect('/cart')
  
+
+@login_required
 def show_cart(request):
     user = request.user
     cart = Cart.objects.filter(user=user)
@@ -154,11 +200,19 @@ def show_cart(request):
         value = p.quantity * p.product.discounted_price
         amount = amount + value
     totalamount = amount 
+    totalamount = amount + 40
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     return render(request, 'app/addtocart.html',locals())
  
  
+@method_decorator(login_required,name='dispatch')
 class checkout(View):
     def get(self,request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         user=request.user
         add=Customer.objects.filter(user=user)
         cart_items=Cart.objects.filter(user=user)
@@ -170,7 +224,7 @@ class checkout(View):
         return render(request,"app/checkout.html",locals())
  
  
- 
+@login_required
 def plus_cart(request):
     if request.method == 'GET':
         prod_id=request.GET['prod_id']
@@ -233,10 +287,12 @@ def remove_cart(request):
         }
         return JsonResponse(data)
  
+@method_decorator(login_required,name='dispatch')
 class FAQsView(View):
     def get(self,request):
         return render(request,'app/FAQs.html',locals())
     
+@method_decorator(login_required,name='dispatch')    
 class termsView(View):
     def get(self,request):
         return render(request,'app/terms.html',locals())
@@ -244,3 +300,38 @@ class termsView(View):
     from django.shortcuts import redirect
 
 
+@login_required    
+def search(request):
+    query = request.GET['search']
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+    product = Product.objects.filter(Q(title__icontains=query))
+    return render(request,"app/search.html",locals())
+    
+
+
+
+
+
+                   # <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                       # <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                        #<div>Welcome ,User</div>
+                        #<div class="relative inline-block">
+                         #   <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                          #  <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                           #     <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                            #    <a href='/' class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                            #</div>
+                        #</div>
+                        
+                    #</div>
+                    #<a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
+                 
+                    
+                #</div>#
+    
+    
+    
+    
+    
