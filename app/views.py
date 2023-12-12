@@ -16,9 +16,19 @@ from django.utils.decorators import method_decorator
 
 # Create your views here.
 
-def home(request):
-    return render(request,"app/index.html")
- 
+# def home(request):
+#     return render(request,"app/index.html")
+
+class ProductView(View):
+    def get(self, request):
+        books = Product.objects.filter(category='BK')
+        accessory = Product.objects.filter(category='AR')
+        merchandise = Product.objects.filter(category='MC')
+        stationary = Product.objects.filter(category='SI')
+        electronics = Product.objects.filter(category='EC')
+        return render(request, 'app/index.html',
+        {'books':books, 'accessory':accessory,'merchandise':merchandise,'stationary':stationary,'electronics':electronics,})
+
 # class CartView(View):
 #     def get(self,request):
 #         return render(request,"app/cart.html",locals())
@@ -66,8 +76,81 @@ class CategoryView(View):
         product= Product.objects.filter(category=val)
         title = Product.objects.filter(category=val).values('title')
         return render(request,"app/category.html",locals())
- 
+
+# merchandise
+def merchandise(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			merchandise = Product.objects.filter(category='MC')
+	elif data == 'tshirt' or data == 'hoodie':
+			merchandise = Product.objects.filter(category='MC').filter(brand=data)
+	elif data == 'below':
+			merchandise = Product.objects.filter(category='MC').filter(discounted_price__lt=500)
+	elif data == 'above':
+			merchandise = Product.objects.filter(category='MC').filter(discounted_price__gt=500)
+	return render(request, 'app/merchandise.html', {'merchandise': merchandise, 'totalitem': totalitem})
     
+# books
+def books(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			books = Product.objects.filter(category='BK')
+	elif data == 'below':
+			books = Product.objects.filter(category='BK').filter(discounted_price__lt=500)
+	elif data == 'above':
+			books = Product.objects.filter(category='BK').filter(discounted_price__gt=500)
+	return render(request, 'app/books.html', {'books': books, 'totalitem': totalitem})
+
+# assessory
+def accessory(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			accessory = Product.objects.filter(category='AR')
+	elif data == 'Bag' or data == 'Cover':
+			accessory = Product.objects.filter(category='AR').filter(brand=data)
+	elif data == 'below':
+			accessory = Product.objects.filter(category='AR').filter(discounted_price__lt=500)
+	elif data == 'above':
+			accessory = Product.objects.filter(category='AR').filter(discounted_price__gt=500)
+	return render(request, 'app/accessory.html', {'accessory': accessory, 'totalitem': totalitem})
+
+# stationary
+def stationary(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			stationary = Product.objects.filter(category='SI')
+	elif data == 'Diary' or data == 'Pen' or data== 'Calendar':
+			stationary = Product.objects.filter(category='SI').filter(brand=data)
+	elif data == 'below':
+			stationary = Product.objects.filter(category='SI').filter(discounted_price__lt=500)
+	elif data == 'above':
+			stationary = Product.objects.filter(category='SI').filter(discounted_price__gt=500)
+	return render(request, 'app/stationary.html', {'stationary': stationary, 'totalitem': totalitem})
+
+
+# electronics
+def electronics(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			electronics = Product.objects.filter(category='EC')
+	elif data == 'Mouse' or data == 'Keyboard'  or data == 'Camera'  or data == 'Headphones' or data == 'USB Cable' :
+			electronics = Product.objects.filter(category='EC').filter(brand=data)
+	elif data == 'below':
+			electronics = Product.objects.filter(category='EC').filter(discounted_price__lt=500)
+	elif data == 'above':
+			electronics = Product.objects.filter(category='EC').filter(discounted_price__gt=500)
+	return render(request, 'app/electronics.html', {'electronics':  electronics, 'totalitem': totalitem})
+
 
 class CustomerRegistrationView(View):
     def get(self,request):
