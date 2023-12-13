@@ -6,15 +6,36 @@ from django.contrib.auth import views as auth_view
 from .forms import LoginForm,MyPasswordResetForm,MyPasswordChangeForm,MySetPasswordForm
 urlpatterns = [
   
-    path("",views.home),
-    # path("item", views.ItemView.as_view(),name="item"),
-    path("account", views.AccountView.as_view(),name="account"),
+    # path("",views.home),
+    path('',views.ProductView.as_view(), name='home'),
+    
+    path('merchandise/', views.merchandise, name='merchandise'),
+    path('merchandise/<slug:data>', views.merchandise, name='merchandisedata'),
+    
+    path('accessory/', views.accessory, name='accessory'),
+    path('accessory/<slug:data>', views.accessory, name='accessorydata'),
+    
+    path('books/', views.books, name='books'),
+    path('books/<slug:data>', views.books, name='booksdata'),
+    
+    path('stationary/', views.stationary, name='stationary'),
+    path('stationary/<slug:data>', views.stationary, name='stationarydata'),
+
+    path('electronics/', views.electronics, name='electronics'),
+    path('electronics/<slug:data>/', views.electronics, name='electronicsdata'),
+    
+    
+  
+    
     path("about", views.AboutView.as_view(),name="about"),
     path("category/<slug:val>", views.CategoryView.as_view(),name="category"),
     path("product-detail/<int:pk>", views.ProductDetail.as_view(),name="product-detail"),
     path("add-to-cart/", views.add_to_cart,name="add-to-cart"),
     path("cart/", views.show_cart,name="showcart"),
     path("checkout/", views.checkout.as_view(),name="checkout"),
+    
+    path("search/", views.search,name="search"),
+    
     
     path("pluscart/", views.plus_cart),
     path("minuscart/", views.minus_cart),
