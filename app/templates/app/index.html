@@ -20,11 +20,15 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <!-- Include Owl Carousel JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -168,10 +172,68 @@
                 </div>
                 
             </nav>
-            
-<!-- Component: Carousel with indicators outside -->
+    <!-- Component: Slider with indicators & controls inside -->
 <div class="relative w-full glide-05">
     <!-- Slides -->
+    <div class="overflow-hidden" data-glide-el="track">
+        <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]">
+            <li><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" /></li>
+
+        </ul>
+    </div>
+    <!-- Controls -->
+    <div class="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 " data-glide-el="controls">
+        <button class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-700 border-slate-700 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20" data-glide-dir="<" aria-label="prev slide">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <title>prev slide</title>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+        </button>
+        <button class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-700 border-slate-700 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20" data-glide-dir=">" aria-label="next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <title>next slide</title>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+        </button>
+    </div>
+    <!-- Indicators -->
+    <div class="absolute bottom-0 flex items-center justify-center w-full gap-2" data-glide-el="controls[nav]">
+        <button class="p-4 group" data-glide-dir="=0" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=1" aria-label="goto slide 2"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=2" aria-label="goto slide 3"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=3" aria-label="goto slide 4"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=4" aria-label="goto slide 5"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=5" aria-label="goto slide 6"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+
+<script>
+    var glide05 = new Glide('.glide-05', {
+    type: 'slider',
+    focusAt: 'center',
+    perView: 1,
+    autoplay: 3000,
+    animationDuration: 700,
+    gap: 0,
+    classes: {
+        activeNav: '[&>*]:bg-slate-700',
+    },
+});
+
+glide05.mount();
+</script>
+<!-- End Slider with indicators & controls inside -->
+<!-- Component: Carousel with indicators outside 
+<div class="relative w-full glide-05">
+    Slides 
     <div class="overflow-hidden" data-glide-el="track">
         <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap">
             <li class="glide__slide"><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" />
@@ -208,7 +270,7 @@
                     
         </ul>
     </div>
-    <!-- Indicators -->
+    Indicators 
     <div class="flex items-center justify-center w-full gap-2" data-glide-el="controls[nav]">
         <button class="p-4 group" data-glide-dir="=0" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
         <button class="p-4 group" data-glide-dir="=1" aria-label="goto slide 2"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
@@ -245,7 +307,7 @@
 
         glide05.mount();
     });
-</script>
+</script> -->
 
 
 
@@ -350,49 +412,72 @@
     <!-- ./categories -->
 
     <div class="py-8"></div>
-
     <!-- new arrival -->
+
     <div class="container pb-16">
-    <!-- 5st Product Slider -->
-<div class="mx-3">
-    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Top New Arrivals</h2>
-    <!-- Slider 5 -->
-    <div class="owl-carousel" id="slider1">
-        {% for prod in electronics %}
-                            
-        <div class="col text-center mb-4 ">
-            <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
-            <div class="">
-                
-                <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
-                <div class="fw-bold">{{prod.title}}</div>
-                <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
-                    <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+        <!-- 5st Product Slider -->
+    <div class="mx-3">
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Top New Arrivals</h2>
+        <!-- Slider 5 -->
+        <div class="owl-carousel" id="slider1">
+            {% for prod in electronics %}
+                                
+            <div class="col text-center mb-4 ">
+                <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+                <div class="">
+                    
+                    <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
+                    <div class="fw-bold">{{prod.title}}</div>
+                    <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                        <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                        
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="/add-to-cart" class="d-inline">
+                                <input type="hidden" name="prod_id" value= {{prod.id}}  />
+                                <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
+                            </form>
+                        </div>
+                       
+                    </div>
                     
                 </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <form action="/add-to-cart" class="d-inline">
-                            <input type="hidden" name="prod_id" value= {{prod.id}}  />
-                            <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
-                        </form>
-                    </div>
-                   
-                </div>
-                
-            </div>
-            </a>
-        </div>            
-        {% endfor %}
-       
-    </div>
-   </div>
-   <!-- End 5st Product Slider -->
-         
-    </div>
-    <!-- ./new arrival -->
-    <div class="py-8"></div>
+                </a>
+            </div>            
+            {% endfor %}
+           
+        </div>
+       </div>
+       <!-- End 5st Product Slider -->
+             
+        </div>
+        <!-- ./new arrival -->
+        <div class="py-8"></div>
+        <script>
+            $(document).ready(function(){
+                $("#slider1").owlCarousel({
+                    items: 4, // Set the number of items to show
+                    loop: true, // Enable loop
+                    margin: 20, // Set margin between items
+                    autoplay: true, // Enable autoplay
+                    autoplayTimeout: 3000, // Set autoplay timeout in milliseconds
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 2
+                        },
+                        1000: {
+                            items: 4
+                        }
+                    }
+                });
+            });
+        </script>
+        
 
             <!-- ads -->
     <div class="container pb-16">
