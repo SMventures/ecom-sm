@@ -9,6 +9,8 @@ CATEGORY_CHOICES=(
     ('MC','Merchandise'),
     ('SI','Stationery Items'),
     ('EC','Electronics'),
+    ('WM','Women'),
+    
     
     
 )
@@ -52,7 +54,9 @@ STATE_CHOICES = (
    ("WB","West Bengal")
 )
 
-class Product(models.Model):
+
+
+class Product(models.Model): 
     title = models.CharField(max_length=100)
     brand = models.CharField(max_length=100, default='Default Brand')
     Availability = models.TextField(max_length=255, default='In Stock')

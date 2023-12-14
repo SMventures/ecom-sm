@@ -67,6 +67,56 @@ class ProductDetail(View):
             totalitem = len(Cart.objects.filter(user=request.user))
         return render(request,"app/productdetail.html",locals())
     
+class ProductDetail1(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail1.html",locals())
+
+
+class ProductDetail2(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail2.html",locals())
+
+
+class ProductDetail3(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail3.html",locals())   
+    
+class ProductDetail4(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail4.html",locals())
+    
+class ProductDetail5(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail4.html",locals())   
+    
+# women detail
+class ProductDetail6(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail6.html",locals())     
 
 class CategoryView(View):
     def get(self,request,val):
@@ -77,7 +127,7 @@ class CategoryView(View):
         title = Product.objects.filter(category=val).values('title')
         return render(request,"app/category.html",locals())
 
-# merchandise
+# men
 def merchandise(request, data=None):
 	totalitem = 0
 	if request.user.is_authenticated:
@@ -150,6 +200,21 @@ def electronics(request, data=None):
 	elif data == 'above':
 			electronics = Product.objects.filter(category='EC').filter(discounted_price__gt=500)
 	return render(request, 'app/electronics.html', {'electronics':  electronics, 'totalitem': totalitem})
+
+# women
+def Women(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			Women = Product.objects.filter(category='WM')
+	elif data == 'tshirt' or data == 'hoodie':
+			Women = Product.objects.filter(category='WM').filter(brand=data)
+	elif data == 'below':
+			Women = Product.objects.filter(category='WM').filter(discounted_price__lt=500)
+	elif data == 'above':
+			Women = Product.objects.filter(category='WM').filter(discounted_price__gt=500)
+	return render(request, 'app/Women.html', {'Women':  Women, 'totalitem': totalitem})
 
 
 class CustomerRegistrationView(View):
