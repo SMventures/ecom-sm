@@ -53,8 +53,16 @@ $('.remove-cart').click(function(){
     })
 })
 
+<<<<<<< HEAD
 
 // slider
+=======
+<<<<<<< HEAD
+=======
+
+// slider
+>>>>>>> 3f77b3050f7bac7b476d3ae0e259e90eb4444f71
+>>>>>>> d458e511974c843a56c79757903c0c0559b39102
 $('#slider1, #slider2, #slider3').owlCarousel({
     loop: true,
     margin: 20,
@@ -77,6 +85,7 @@ $('#slider1, #slider2, #slider3').owlCarousel({
             autoplay: true,
         }
     }
+<<<<<<< HEAD
 })
 
 $('.remove-wishlist').click(function(){
@@ -96,3 +105,10 @@ $('.remove-wishlist').click(function(){
         }
     })
 })
+=======
+<<<<<<< HEAD
+})
+=======
+})
+>>>>>>> 3f77b3050f7bac7b476d3ae0e259e90eb4444f71
+>>>>>>> d458e511974c843a56c79757903c0c0559b39102

@@ -138,6 +138,8 @@
                             <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
                             <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
                             <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
                             <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
                         </div>
@@ -149,6 +151,7 @@
                 </ul>
                 <div class="flex items-center space-x-4 ml-auto pr-8">
                     <a href="{% url 'showwishlist' %}" class="text-center text-white hover:text-primary transition relative">
+                    <a href="#" class="text-center text-white hover:text-primary transition relative">
                         <div class="text-2xl">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -188,6 +191,7 @@
                             
     <div class="col text-center mb-4 ">
         <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+        <a href="{% url 'product-detail2' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
         <div class="">
             
             <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80">
@@ -244,6 +248,12 @@
                         return false;
                     }
                 </script>
+                <form action="/add-to-wishlist" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{ prod.id }}" />
+                    <button type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 text-white">
+                        <i class="fa-solid fa-heart"></i> Wishlist
+                    </button>
+                </form>
             </div>
             
         </div>

@@ -759,4 +759,813 @@
     <script src="../../static/app/js/main.js"></script> 
     <script src="{% static 'app/js/myscript.js' %}"></script>
 
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Digital Dalal street </title>
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'app/css/st.css' %}"/>
+    {% comment %} <link rel="stylesheet" href="../../static/app/css/style.css"/> {% endcomment %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-GLhlTQ8i6cP7rYe9HqF7Q+tC4lMTn2jgI5FqG5RbFawds+4s2GpLvYY3bGcd6hX" crossorigin="anonymous">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Include Owl Carousel JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Include Owl Carousel JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!-- Product Slider CSS -->
+<style>
+    #productSlider .item {
+        text-align: center;
+        padding: 20px;
+    }
+
+    #productSlider img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+</style>
+
+</head>
+    <body>
+        <script>
+            function toggleDropdown() {
+                var dropdown = document.getElementById("productsDropdown");
+                dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            }
+    
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdown = document.getElementById("productsDropdown");
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+        <div class="">
+            
+            <header class="py-4 shadow-sm bg-white">
+             <div class="container flex items-center justify-between">
+                    <div class="flex flex-row">
+                        <a href="index.html" >
+                            <img src="../../static/app/images/product/smlogo.png" alt="Logo" class="w-10 h-auto">
+                            
+                        </a>
+                        <p class="ml-3 text-blue-700 font-bold text-xl flex items-center justify-center">
+                            Digital Dalal Street
+                        </p>
+                    
+                </div>
+                <!-- <div class="w-full max-w-xl relative flex mx-auto">
+                    <span class="absolute left-2 top-3 text-lg text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" name="search" id="search"
+                        class="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
+                        placeholder="search">
+                    <button
+                        class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
+                </div> -->
+                <form class="w-full max-w-xl relative flex mx-auto" role="search" action="/search">
+                    <span class="absolute left-2 top-3 text-lg text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+
+                    <input type="search" name="search" aria-label="Search"
+                        class="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
+                        placeholder="Search">
+                    
+                        <button
+                        class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center" type="submit">Search</button>
+
+                </form>
+                <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'profile' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">
+                            Welcome, {{ user.username }}
+                        </a>
+                    </div>
+                        <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                        <div class="relative inline-block">
+                            <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                            <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                                <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                                <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
+                    {% endif %}
+                </div>
+                
+                
+                   
+                   
+                    
+                </div>
+            </div>
+                
+            </header>    
+            
+            <nav class="flex items-center justify-start bg-blue-800 text-white">
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:underline">Home </a></li>
+                    <li class="relative group">
+                        <a href="#" class="dropbtn" onclick="toggleDropdown()">Products <i class="fa fa-caret-down"></i></a>
+                        <div id="productsDropdown" class="dropdown-content">
+                        
+                            <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
+                            <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+                        </div>
+                    </li>
+
+                    <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
+                           
+                    <li><a href="#contactUsSection" class="text-white cursor-pointer hover:underline">Contact us</a></li> 
+                        
+
+                </ul>
+                
+                <div class="flex items-center space-x-4 ml-auto pr-8">
+                    <a href="#" class="text-center text-white hover:text-primary transition relative">
+                        <div class="text-2xl">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <div class="text-xs leading-3">Wishlist</div>
+                    </a>
+                    
+                    <a href="{% url 'showcart' %}" class="text-center text-white hover:text-primary transition relative">
+                        <div class="text-2xl">
+                            <i class="fa-solid fa-shopping-bag"></i>
+                        </div>
+                        <div class="text-xs leading-3">Cart</div>
+                        <div id="cartAmount" class="cartAmount"></div>
+                    </a>
+                
+                    
+                </div>
+                
+            </nav>
+    <!-- Component: Slider with indicators & controls inside -->
+<div class="relative w-full glide-05">
+    <!-- Slides -->
+    <div class="overflow-hidden" data-glide-el="track">
+        <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]">
+            <li><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" /></li>
+            <li><img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" /></li>
+
+        </ul>
+    </div>
+    <!-- Controls -->
+    <div class="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 " data-glide-el="controls">
+        <button class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-700 border-slate-700 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20" data-glide-dir="<" aria-label="prev slide">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <title>prev slide</title>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+        </button>
+        <button class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-700 border-slate-700 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20" data-glide-dir=">" aria-label="next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <title>next slide</title>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+        </button>
+    </div>
+    <!-- Indicators -->
+    <div class="absolute bottom-0 flex items-center justify-center w-full gap-2" data-glide-el="controls[nav]">
+        <button class="p-4 group" data-glide-dir="=0" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=1" aria-label="goto slide 2"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=2" aria-label="goto slide 3"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=3" aria-label="goto slide 4"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=4" aria-label="goto slide 5"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=5" aria-label="goto slide 6"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+
+<script>
+    var glide05 = new Glide('.glide-05', {
+    type: 'slider',
+    focusAt: 'center',
+    perView: 1,
+    autoplay: 3000,
+    animationDuration: 700,
+    gap: 0,
+    classes: {
+        activeNav: '[&>*]:bg-slate-700',
+    },
+});
+
+glide05.mount();
+</script>
+<!-- End Slider with indicators & controls inside -->
+<!-- Component: Carousel with indicators outside 
+<div class="relative w-full glide-05">
+    Slides 
+    <div class="overflow-hidden" data-glide-el="track">
+        <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap">
+            <li class="glide__slide"><img src="../../static/app/images/banner/DDS_banner (1).png" class="w-full max-w-full max-h-full m-auto" />
+                <a href="{% url 'electronics' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/gadgets_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                     </li>
+                </a>
+
+                <a href="{% url 'books' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/books_banner.png" class="w-full max-w-full max-h-full m-auto" />
+                    </li>
+                </a>
+                
+                <a href="{% url 'accessory' %}">
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/accessories_banners.png" class="w-full max-w-full max-h-full m-auto" />
+                   </li>
+                </a>
+            
+                <a href="{% url 'stationary' %}">    
+                     <li class="glide__slide">
+                        <img src="../../static/app/images/banner/stationery (1).png" class="w-full max-w-full max-h-full m-auto" />
+                     </li>
+                </a>
+           
+                <a href="{% url 'merchandise' %}">
+
+                    <li class="glide__slide">
+                        <img src="../../static/app/images/banner/tshirts_b.png" class="w-full max-w-full max-h-full m-auto" />
+                    </li>
+                </a>
+                    
+        </ul>
+    </div>
+    Indicators 
+    <div class="flex items-center justify-center w-full gap-2" data-glide-el="controls[nav]">
+        <button class="p-4 group" data-glide-dir="=0" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=1" aria-label="goto slide 2"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=2" aria-label="goto slide 3"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=3" aria-label="goto slide 4"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=4" aria-label="goto slide 5"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        <button class="p-4 group" data-glide-dir="=5" aria-label="goto slide 6"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var glide05 = new Glide('.glide-05', {
+            type: 'carousel',
+            focusAt: 'center',
+            perView: 1, // Set to 1 to display one item at a time
+            autoplay: 2000, // Set autoplay to 3000 milliseconds (3 seconds)
+            animationDuration: 700,
+            gap: 24,
+            classes: {
+                activeNav: '[&>*]:bg-slate-700',
+            },
+            breakpoints: {
+                1024: {
+                    perView: 1
+                },
+                640: {
+                    perView: 1
+                }
+            },
+        });
+
+        glide05.mount();
+    });
+</script> -->
+
+
+
+<!-- End Carousel with indicators outside -->
+              
+              
+         <!--   <script>
+                // JavaScript for automatic image change
+                const carouselInner = document.getElementById('carouselInner');
+                const totalImages = document.querySelectorAll('.carousel-item').length;
+                const transitionDuration = 5000; // Set the duration in milliseconds
+              
+                let currentIndex = 0;
+              
+                const showImage = (index) => {
+                  const offset = -index * 100;
+                  carouselInner.style.transform = `translateX(${offset}%)`;
+                };
+              
+                const nextImage = () => {
+                  currentIndex = (currentIndex + 1) % totalImages;
+                  showImage(currentIndex);
+                };
+              
+                // Change image every specified duration
+                setInterval(nextImage, transitionDuration);
+              
+                // Initial display
+                showImage(currentIndex);
+              </script> -->
+              
+         
+<!-- features -->
+<div class="container py-16">
+    <div class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="../../static/app/images/product/delivery-van.svg" alt="Delivery" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">Free Shipping</h4>
+                <p class="text-gray-500 text-sm">Order over ₹999</p>
+            </div>
+        </div>
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="../../static/app/images/product/money-back.svg"  alt="Delivery" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">Money Rturns</h4>
+                <p class="text-gray-500 text-sm">30 days money returs</p>
+            </div>
+        </div>
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="../../static/app/images/product/service-hours.svg" alt="Delivery" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">24/7 Support</h4>
+                <p class="text-gray-500 text-sm">Customer support</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./features -->
+            
+       
+        
+                <!------------------------------------------featured categories-------------------------------------->
+                 <!-- categories -->
+    <div class="container py-16 object-contain h-auto w-auto " >
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
+        <div class="grid grid-cols-3 gap-3 ">
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/mkt_wizards.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'books' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Books</a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/black_hoodie.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'merchandise' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Merchandise</a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/bag1.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'accessory' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Accessories
+                </a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/camera.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'electronics' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Electronics</a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../../media/product/diary1.jpg" alt="category 1" class="w-full">
+                <a href="{% url 'stationary' %}"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Stationery
+                    Room</a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="../../static/app/images/product/combos1.jpg" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Combos</a>
+            </div>
+        </div>
+    </div>
+    <!-- ./categories -->
+
+    <div class="py-8"></div>
+    <!-- new arrival -->
+
+    <div class="container pb-16">
+        <!-- 5st Product Slider -->
+    <div class="mx-3">
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Top New Arrivals</h2>
+        <!-- Slider 5 -->
+        <div class="owl-carousel" id="slider1">
+            {% for prod in electronics %}
+                                
+            <div class="col text-center mb-4 ">
+                <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+                <div class="">
+                    
+                    <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
+                    <div class="fw-bold">{{prod.title}}</div>
+                    <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                        <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                        
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="/add-to-cart" class="d-inline">
+                                <input type="hidden" name="prod_id" value= {{prod.id}}  />
+                                <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
+                            </form>
+                        </div>
+                       
+                    </div>
+                    
+                </div>
+                </a>
+            </div>            
+            {% endfor %}
+           
+        </div>
+       </div>
+       <!-- End 5st Product Slider -->
+             
+        </div>
+        <!-- ./new arrival -->
+        <div class="py-8"></div>
+        <script>
+            $(document).ready(function(){
+                $("#slider1").owlCarousel({
+                    items: 4, // Set the number of items to show
+                    loop: true, // Enable loop
+                    margin: 20, // Set margin between items
+                    autoplay: true, // Enable autoplay
+                    autoplayTimeout: 3000, // Set autoplay timeout in milliseconds
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 2
+                        },
+                        1000: {
+                            items: 4
+                        }
+                    }
+                });
+            });
+        </script>
+        
+
+            <!-- ads -->
+    <div class="container pb-16">
+        <a href="#">
+            <img src="../../static/app/images/product/products.png" alt="ads" class="w-full">
+        </a>
+    </div>
+    <!-- ./ads -->
+
+    <!-- product -->
+    <div class="container pb-16">
+       <!-- 2st Product Slider -->
+<div class="mx-3">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Now Trending</h2>
+    <!-- Slider 2 -->
+    <div class="owl-carousel" id="slider1">
+        {% for prod in accessory %}
+                            
+        <div class="col text-center mb-4 ">
+            <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+            <div class="">
+                
+                <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
+                <div class="fw-bold">{{prod.title}}</div>
+                <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                    <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="/add-to-cart" class="d-inline">
+                            <input type="hidden" name="prod_id" value= {{prod.id}}  />
+                            <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
+                        </form>
+                    </div>
+                   
+                </div>
+                
+            </div>
+            </a>
+        </div>            
+        {% endfor %}
+       
+    </div>
+   </div>
+   <!-- End 2st Product Slider -->
+
+<!-- 3st Product Slider -->
+<div class="mx-3">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">New Releases in Clothing </h2>
+    <!-- Slider 3 -->
+    <div class="owl-carousel" id="slider1">
+        {% for prod in merchandise %}
+                            
+        <div class="col text-center mb-4 ">
+            <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+            <div class="">
+                
+                <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
+                <div class="fw-bold">{{prod.title}}</div>
+                <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                    <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="/add-to-cart" class="d-inline">
+                            <input type="hidden" name="prod_id" value= {{prod.id}}  />
+                            <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
+                        </form>
+                    </div>
+                   
+                </div>
+                
+            </div>
+            </a>
+        </div>            
+        {% endfor %}
+       
+    </div>
+   </div>
+   <!-- End 3st Product Slider -->
+
+   
+<!-- 4st Product Slider -->
+<div class="mx-3">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">BEST DEALS ON STATIONARY ITEMS</h2>
+    <!-- Slider 4 -->
+    <div class="owl-carousel" id="slider1">
+        {% for prod in stationary %}
+                            
+        <div class="col text-center mb-4 ">
+            <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+            <div class="">
+                
+                <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
+                <div class="fw-bold">{{prod.title}}</div>
+                <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                    <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="/add-to-cart" class="d-inline">
+                            <input type="hidden" name="prod_id" value= {{prod.id}}  />
+                            <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
+                        </form>
+                    </div>
+                   
+                </div>
+                
+            </div>
+            </a>
+        </div>            
+        {% endfor %}
+       
+    </div>
+   </div>
+   <!-- End 4st Product Slider -->
+
+           
+    </div>
+    <!-- ./product -->
+    <div class="mt-8"></div>
+
+       <!-------------------------offer-------------> 
+       <div class="offer">
+        <div class="small-container">
+           <div class="row">
+            <div class="col-2">
+               <img src="{% static 'app/images/product/exclusive.png' %}">
+               </div>
+            <div class="col-2">
+               <p>Exclusively Available on Digital dalal street</p>
+                <h1>The Complete Guide To Day Trading</h1>
+                <small>The Complete Guide to Day Trading You picked up this book because you’re serious about becoming a successful day trader. And, by reading this book, that’s exactly what you’ll learn how to do.<br></small>
+               <a href="" class="btn">Buy Now &#8594;</a>
+               </div>
+            </div>
+           </div>
+        </div> 
+
+        <div class="py-12"><!-- Add margin-bottom or use pb-8 for padding-bottom --></div>
+
+        <!-------------------------------------Best Seller---------------------------------------->
+        <div class="container pb-16">
+        <!-- 1st Product Slider -->
+<div class="mx-3">
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Best sellers</h2>
+     <!-- Slider 1 -->
+     <div class="owl-carousel" id="slider1">
+        {% for prod in books %}
+                                
+        <div class="col text-center mb-4 ">
+            <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+            <div class="">
+                
+                <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-84 w-80">
+                <div class="fw-bold">{{prod.title}}</div>
+                <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                    <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="/add-to-cart" class="d-inline">
+                            <input type="hidden" name="prod_id" value= {{prod.id}}  />
+                            <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
+                        </form>
+                    </div>
+                 
+                </div>
+                
+            </div>
+            </a>
+        </div>            
+        {% endfor %}
+       
+     </div>
+    </div>
+    <!-- End 1st Product Slider -->  
+                
+           
+        </div>
+        <div class="mt-12"><!-- Add margin-bottom or use pb-8 for padding-bottom --></div>
+
+
+        <!----------------------------------footer--------------------------->
+        <div class="flex items-end w-full min-h-screen bg-white">
+
+            <footer class="w-full text-white bg-gray-800 body-font">
+                <div
+                    class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+                    <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+                    
+                        <a class="flex items-center justify-center font-bold  text-white title-font md:justify-start font-caveat text-2xl">
+                            Digital Dalal Street
+                        </a>
+                        
+                        <p class="mt-2 text-sm text-white">Seamless Trading, Limitless Shopping.</p>
+                        <div class="mt-4">
+                            <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+                                <a class="text-white cursor-pointer hover:text-gray-700>
+                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700">
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="https://wa.me/8448640308?text=Hello">
+                                    <!-- WhatsApp Icon with increased size and margin -->
+                                    <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
+                                </a>
+                                
+                                
+                                
+                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">
+                                    <!-- Gmail Icon with increased size -->
+                                    <i class="far fa-envelope fa-lg"></i>
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
+
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
+                        
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Company</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Products</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                       
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 class="mb-3 text-sm text-white font-medium tracking-widest font-bold uppercase title-font">Support</h2>
+
+                            </h2>
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a href="{% url 'terms' %}" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
+                                </li>
+                                
+                                <li class="mt-3">
+                                    <a href= "{% url 'FAQs' %}" class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                          <section id="contactUsSection">
+                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                         
+                            <ul class="list-none">
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
+                                </li>
+                                <li class="mt-3">
+                                    <a class="text-white cursor-pointer hover:text-gray-700">Call us
+                                    </a>
+                                </li>
+                            </ul>
+                               
+                         </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue-800">
+                    <div class="container px-5 py-4 mx-auto">
+                        <p class="text-sm text-white capitalize xl:text-center">© 2023 All rights reserved </p>
+                    </div>
+                </div>
+            </footer>
+        
+        </div>
+        <!-------------------------------------js for toggle menu-------------------------------------->
+
+        <script>
+            const userIcon = document.getElementById('userIcon');
+            const dropdown = document.getElementById('dropdown');
+        
+            userIcon.addEventListener('click', () => {
+                dropdown.classList.toggle('hidden');
+            });
+        
+            document.addEventListener('click', (event) => {
+                if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        </script>
+     
+    </body>
+    <script script="../..static/app/js/owl.carousel.min.js %"></script>
+    <script script="../..static/app/js/all.min.js"></script>
+    <script src="../../static/app/js/Data.js %"></script>
+    <script src="../../static/app/js/main.js"></script> 
+    <script src="{% static 'app/js/myscript.js' %}"></script>
+
 </html>

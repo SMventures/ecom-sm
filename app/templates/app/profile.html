@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -111,6 +112,12 @@
                             <a href="{% url 'category' 'MC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
                             <a href="{% url 'category' 'SI' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
                             <a href="{% url 'category' 'EC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+                            <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
+                            <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
                         </div>
                     </li>
                     <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
@@ -202,6 +209,20 @@
 <!--<div class="container my-5">
     <div class="row">
         <h3> Welcome {{request.user}}</h3>
+{% load static %}  
+<link rel="stylesheet" href="../../static/app/css/style.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"/>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <h3 class="my-custom-heading">Welcome<span class="text-capitalize">{{ request.user }}</span></h3>
  
         <div class="col-sm-2 border-end">
             <ul class="list-unstyled">
@@ -238,12 +259,20 @@
                         </div>
                     {% endfor %}
                 {% endif %}
+<<<<<<< HEAD
                     </div>
             </form>
         </div>
     </div>
 </div>-->
 
+
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
 
 
  <!----------------------------------footer--------------------------->

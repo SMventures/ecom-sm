@@ -1,3 +1,4 @@
+
 {% load static %}
 <html lang="en">
 <head>
@@ -106,11 +107,20 @@
                         <a href="#" class="dropbtn" onclick="toggleDropdown()">Products <i class="fa fa-caret-down"></i></a>
                         <div id="productsDropdown" class="dropdown-content">
                         
+<<<<<<< HEAD
                             <a href="{% url 'category' 'BK' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'category' 'AR' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
                             <a href="{% url 'category' 'MC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
                             <a href="{% url 'category' 'SI' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
                             <a href="{% url 'category' 'EC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+
+                            <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
+                            <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+
                         </div>
                     </li>
                     <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
@@ -138,6 +148,7 @@
                 </div>
                 
             </nav>
+<<<<<<< HEAD
            
             <html lang="en">
                 <head>
@@ -162,6 +173,23 @@
                 
                     <!-- Profile Form Section -->
                   
+=======
+            {% block main-content %}
+
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome<span class="text-capitilize">{{request.user}}</span></h3>
+ 
+    <div class="col-sm-2 border-end">
+        <ul class="list-unstyled">
+            <li class="d-grid"><a href="{% url 'profile' %}" class="btn btn-primary" style="background-color: blue; color: #fff;">Profile</a></li>
+                 
+            <li class="d-grid"><a href="{% url 'address' %}" class="btn btn-primary" style="background-color: blue; color: #fff;">Address</a></li>
+             
+            <li class="d-grid"><a href="{% url 'passwordchange' %}" class="btn btn-primary" style="background-color: blue; color: #fff;">Change Password</a></li>
+        </ul>
+    </div>
+
     <div class="col-lg-8 offset-lg-1 border border-2">
         <div class="row">
             {% for ad in add %}
@@ -175,8 +203,11 @@
                         <p>City: {{ad.city}}</p>
                         <p>Pincode: {{ad.zipcode}}</p>
                         <p>State: {{ad.state}}</p>
-                        
+
                         <p type="submit" class="btn btn-secondary"><a href="{% url 'updateAddress' pk=ad.id%}">Update</a></p>
+
+                        <p type="submit" class="btn btn-primary" style="background-color: blue; color: #fff;"><a href="{% url 'updateAddress' pk=ad.id%}">Update</a></p>
+
                         
                     </div>
                 </div>
@@ -186,6 +217,7 @@
     </div>
 </div>
 </div>
+<<<<<<< HEAD
                            
                             
                             {% if form.non_field_errors %}
@@ -213,10 +245,17 @@
                 </html>
                 
     
+=======
+</div> 
+>>>>>>> d458e511974c843a56c79757903c0c0559b39102
 
 
   
 
+
+
+
+{% endblock main-content %}
 
  <!----------------------------------footer--------------------------->
  <div class="flex items-end w-full min-h-screen bg-white">

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . models import Cart, Customer, Product, Wishlist
+from . models import Cart, Customer, Product
 
 # Register your models here.
 
@@ -20,3 +21,4 @@ class CartModelAdmin(admin.ModelAdmin):
 class WishlistModelAdmin(admin.ModelAdmin):
     list_display = ['id','user','product']    
         
+    

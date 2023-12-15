@@ -38,7 +38,7 @@
         <div class="">
             
             <header class="py-4 shadow-sm bg-white">
-                <div class="container flex items-center justify-between">
+             <div class="container flex items-center justify-between">
                     <div class="flex flex-row">
                         <a href="index.html" >
                             <img src="../../static/app/images/product/smlogo.png" alt="Logo" class="w-10 h-auto">
@@ -58,9 +58,8 @@
                         placeholder="search">
                     <button
                         class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center">Search</button>
-                </div>
-                 -->
-                 <form class="w-full max-w-xl relative flex mx-auto" role="search" action="/search">
+                </div> -->
+                <form class="w-full max-w-xl relative flex mx-auto" role="search" action="/search">
                     <span class="absolute left-2 top-3 text-lg text-gray-400">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
@@ -73,6 +72,7 @@
                         class="bg-blue-700 border border-primary text-white px-8 rounded-r-md hover:bg-blue-600 transition hidden md:flex items-center justify-center" type="submit">Search</button>
 
                 </form>
+
                 <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
                     {% if user.is_authenticated %}
                         <a href="{% url 'profile' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">
@@ -91,12 +91,15 @@
                         <a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
                     {% endif %}
                 </div>
-                 
+                
+                
+                   
+                   
                     
                 </div>
             </div>
                 
-            </header> 
+            </header>    
             
             <nav class="flex items-center justify-start bg-blue-800 text-white">
                 <ul class="flex space-x-4">
@@ -107,7 +110,6 @@
                         
                             <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
-                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
                             <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
                             <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
                             <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
@@ -139,82 +141,93 @@
                 </div>
                 
             </nav>
-
-            {% block main-content %}
-            <div class="container">
-                {% if messages %}
-                    {% for msg in messages %}
-                        <div class="alert alert-danger" role="alert">
-                            {{msg}}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                <div class="row mt-5">
-                    <div class="col-sm-6">
-                        <!-- <h4>Order Summary</h4> -->
-                        <u><b><h4 class="flex items-center justify-center mb-4 " style="font-size: 30px;">Order Summary</h4></b></u>
-                        <hr>
-                        {% for item in cart_items %}
-                            <div class="card mb-2">
-                                <div class="card-body">
-                                    <u><b><h5>Product: {{item.product.title}}</h5></b></u>
-                                    <b><p>Quantity: {{item.quantity}}</p></b>
-                                    <b><p class="fw-bold">Price:{{item.product.discounted_price}}</p></b>
-                                    <br>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <b class="fw-bold"  style="font-size: 20px;">Total Cost = {{totalamount}} </b>
-                        <br>
-                        <!-- <small>keep shopping</small> -->
-                    </div>
-                 
-                    <div class="col-sm-4 offset-sm-1">
-                        <u><b><h4 class="flex items-center justify-center mb-4 " style="font-size: 30px;">Select Shipping Address</h4></b></u>
-                        
-                        
-                    <div class="col-sm-4 offset-sm-1">
-                        <!-- <h4>Select Shipping Address</h4> -->
-                        <hr>
-                        <form method="post" id="myform">
-                            {% csrf_token %}
-                            {% for ad in add %}
-                            <div class="card">
-                                <div class="card-body">
-                                <b><h5>{{ad.name}}</h5></b>
-                                <b><p>Mobile : {{ad.mobile}}</p></b>
-                                <b><p>{{ad.locality}} {{ad.city}} {{ad.state}} - {{ad.zipcode}}</p></b>
-                                </div>
-                            </div>
-                                <div class="form-check mt-2 mb-5">
-                                    <input class="form-check-input" type="radio" name="custid" id="custadd{{forloop.counter}}" value="{{ad.id}}">
-                                    <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}"><b>Address:{{forloop.counter}}</b> </label>
-                                </div>
-                                <hr>
-                            {% endfor %}
-                                <div class="form-check mb-3">
-                                    <b><label for="totalamount" class="form-label">Total Amount</label></b>
-                                    <b><input type="number" class="form-control" name="totalamount" value="{{totalamount}}" readonly> </b>   
-                                </div>
-                                <div class="text-end">
-                                    <!-- <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button> -->
-                                        <!-- <div id="paypal-button-container"></div> -->
-                                    <button id="rzp-button1" type="submit" class="btn btn-warning mt-3 px-5 fw-bold  hover:underline text-center text-white hover:text-primary transition relative mr-3 "  style="background-color: rgb(71, 71, 190); "">Payment</button>
-                                </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-              
-            {% endblock main-content %}
             
+            
+            {% comment %} {% block main-content %} {% endcomment %}
+            <div class="container grid grid-cols-2 px-10 gap-6 mt-8 mb-6">
+               
+                <div class="  py-8 px-6 bg-gray-100 w-auto h-auto items-center">
+                    <img src="{{product.product_image.url}}"  class="w-full h-96 object-contain items-center" alt= "product" >
+                </div>
+                    <div class="px-12">
+                       <h1 class=" text-2xl font-bold mt-8 mb-2">{{product.title}}</h1>
+                  
+                        <div class="flex items-center mb-4">
+                            <div class="flex gap-1 text-sm text-yellow-400">
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <div class="text-xs text-gray-500 ml-3">(150 Reviews)</div>
+                        </div>
+
+                        <div class=" space-y-2t flex items-baseline mb-1 space-x-2 font-roboto mt-6">
+                            <p class="text-sm text-primary font-semibold">Availability:</p>
+                            <p class="text-sm text-green-600">{{product.Availability}}</p>
+                        </div>
+                            
+                        
+                        <div class=" flex items-baseline mb-1 space-x-2 font-roboto mt-8">
+                            <p class="text-sm text-primary font-semibold">Rs.{{product.discounted_price}}/-</p>
+                            <p class="text-sm text-gray-400 line-through">Rs.{{product.selling_price}}/-</p>
+                        </div>
+                      <div></div>
+                        <h3 class="space-y-2t text-xl text-black font-semibold font-roboto mt-10 mb-1">Product details </h3>
+                             <div class="flex items-center gap-2">
+                        <p class="text-gray-800 font-roboto mt-4 text-sm">
+                            {{product.description}}
+                        </p>
+                        
+                        </div>
+                        <h3 class="space-y-2t text-xl text-black font-semibold font-roboto mt-10 mb-2">Select Size: </h3>
+
+                        <label for="small"><input type="radio" id="small" name="size" value="small"> Small</label>
+                        <label for="medium"><input type="radio" id="medium" name="size" value="medium"> Medium</label>
+                        <label for="large"><input type="radio" id="large" name="size" value="large"> Large</label>
+                        <label for="xl"><input type="radio" id="xl" name="size" value="xl"> XL</label>
+
+                        <h3 class="space-y-2t text-xl text-black font-semibold font-roboto mt-10 mb-2">Select Size: </h3>
+                        <label for="red"><input type="radio" id="red" name="color" value="red"> Black</label>
+                        <label for="blue"><input type="radio" id="blue" name="color" value="blue"> Blue</label>
+                        <label for="green"><input type="radio" id="green" name="color" value="green"> White</label>
+                        <label for="yellow"><input type="radio" id="yellow" name="color" value="yellow"> Yellow</label>
+
+                        
+                        <div class="flex gap-5">
+                            <form action="/add-to-cart" class="flex text-white items-center">
+                                <input type="hidden" name="prod_id" value="{{product.id}}" />
+                                <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 hover:underline text-white">Add to Cart</button>
+                            </form>
+                          
+                       </div> 
+                            <a href="{% url 'checkout' %}" type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 hover:underline text-white">Buy Now</a>
+                        </div>
+                        
+            </div>
+    
+            
+    
+                
+    
+          
+        <!-- ./product-detail -->
+        
+                          
+                        
+                    </div>
+
+                </div>
+
+              </div>
+            {% comment %} {% endblock main-content %} {% endcomment %}
+            
+           
        
-        
-        
-
-
-         <!----------------------------------footer--------------------------->
-         <div class="flex items-end w-full min-h-screen bg-white">
+    
+        <!----------------------------------footer--------------------------->
+        <div class="flex items-end w-full min-h-screen bg-white">
 
             <footer class="w-full text-white bg-gray-800 body-font">
                 <div

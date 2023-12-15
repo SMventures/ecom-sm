@@ -137,8 +137,13 @@
                         
                             <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+<<<<<<< HEAD
                             <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
-                            <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+=======
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
+                        <a href="{% url 
+'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
                             <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
                         </div>
                     </li>
@@ -149,6 +154,7 @@
                 </ul>
                 <div class="flex items-center space-x-4 ml-auto pr-8">
                     <a href="{% url 'showwishlist' %}" class="text-center text-white hover:text-primary transition relative">
+                    <a href="#" class="text-center text-white hover:text-primary transition relative">
                         <div class="text-2xl">
                             <i class="fa-regular fa-heart"></i>
                         </div>
@@ -190,7 +196,11 @@
     {% for prod in electronics %}
                             
     <div class="col text-center mb-4 ">
+<<<<<<< HEAD
         <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+=======
+        <a href="{% url 'product-detail5' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+>>>>>>> d458e511974c843a56c79757903c0c0559b39102
         <div class="">
             
             <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80">
@@ -207,6 +217,7 @@
                         <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
                     </form>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         <form id="wishlistForm_{{prod.id}}" action="/add-to-wishlist" class="d-inline">
@@ -247,6 +258,14 @@
                         return false;
                     }
                 </script>
+
+                <form action="/add-to-wishlist" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{ prod.id }}" />
+                    <button type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 text-white">
+                        <i class="fa-solid fa-heart"></i> Wishlist
+                    </button>
+                </form>
+
             </div>
             
         </div>

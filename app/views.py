@@ -2,11 +2,15 @@ from django.db.models import Count
 from django.shortcuts import render, redirect, reverse
 from django.views import View
 from . models import Product, Cart, Wishlist
+from django.shortcuts import render, redirect
+from django.views import View
+from . models import Product, Cart
 from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from . forms import LoginForm
 from .models import Customer
 from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.db.models import Q
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -67,6 +71,56 @@ class ProductDetail(View):
             totalitem = len(Cart.objects.filter(user=request.user))
         return render(request,"app/productdetail.html",locals())
     
+class ProductDetail1(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail1.html",locals())
+
+
+class ProductDetail2(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail2.html",locals())
+
+
+class ProductDetail3(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail3.html",locals())   
+    
+class ProductDetail4(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail4.html",locals())
+    
+class ProductDetail5(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail4.html",locals())   
+    
+# women detail
+class ProductDetail6(View):
+    def get(self,request,pk):
+        product= Product.objects.get(pk=pk)
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+        return render(request,"app/productdetail6.html",locals())     
 
 class CategoryView(View):
     def get(self,request,val):
@@ -78,6 +132,7 @@ class CategoryView(View):
         return render(request,"app/category.html",locals())
 
 # merchandise
+# men
 def merchandise(request, data=None):
 	totalitem = 0
 	if request.user.is_authenticated:
@@ -150,6 +205,21 @@ def electronics(request, data=None):
 	elif data == 'above':
 			electronics = Product.objects.filter(category='EC').filter(discounted_price__gt=500)
 	return render(request, 'app/electronics.html', {'electronics':  electronics, 'totalitem': totalitem})
+
+# women
+def Women(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			Women = Product.objects.filter(category='WM')
+	elif data == 'tshirt' or data == 'hoodie':
+			Women = Product.objects.filter(category='WM').filter(brand=data)
+	elif data == 'below':
+			Women = Product.objects.filter(category='WM').filter(discounted_price__lt=500)
+	elif data == 'above':
+			Women = Product.objects.filter(category='WM').filter(discounted_price__gt=500)
+	return render(request, 'app/Women.html', {'Women':  Women, 'totalitem': totalitem})
 
 
 class CustomerRegistrationView(View):
@@ -439,6 +509,23 @@ def remove_wishlist(request):
 
 
 
+    
+                   # <div class="text-sm flex flex-row gap-2 ml-2 text-black items-center justify-center">
+                       # <i class="fa-regular fa-user rounded-lg p-2"></i>  
+                        #<div>Welcome ,User</div>
+                        #<div class="relative inline-block">
+                         #   <i id="userIcon" class="fa fa-caret-down text-black rounded-lg p-2 cursor-pointer"></i>
+                          #  <div id="dropdown" class="hidden absolute right-0 mt-2 space-y-2 bg-white border border-black rounded-md shadow-lg z-10">  
+                           #     <a href="{% url 'profile' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Account</a>
+                            #    <a href='/' class="block px-4 py-2 text-gray-800 hover:bg-gray-100 text-red-700">Logout</a>
+                            #</div>
+                        #</div>
+                        
+                    #</div>
+                    #<a href="{% url 'customerregistration' %}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-4">Login/Signup</a>
+                 
+                    
+                #</div>#
     
     
     

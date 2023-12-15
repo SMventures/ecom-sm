@@ -137,7 +137,6 @@
                         
                             <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
-                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
                             <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
                             <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
                             <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
@@ -150,7 +149,6 @@
 
                 </ul>
                 <div class="flex items-center space-x-4 ml-auto pr-8">
-                    <a href="{% url 'showwishlist' %}" class="text-center text-white hover:text-primary transition relative">
                     <a href="#" class="text-center text-white hover:text-primary transition relative">
                         <div class="text-2xl">
                             <i class="fa-regular fa-heart"></i>
@@ -177,22 +175,21 @@
  <div class="row">
   <div class="col-sm-3">
    <div class="list-group">
-     <a href="{% url 'merchandise' %}" class="list-group-item list-group-item-action" aria-current="true"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">All</button></a>
-     <a href="{% url 'merchandisedata' 'tshirt'  %}" class="list-group-item list-group-item-action"  aria-current="true"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">T-shirts</button></a>
-     <a href="{% url 'merchandisedata' 'hoodie'  %}" class="list-group-item list-group-item-action"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Hoodies</button></a>
-     <a href="{% url 'merchandisedata' 'below'  %}" class="list-group-item list-group-item-action"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Below 500</button></a>
-     <a href="{% url 'merchandisedata' 'above'  %}" class="list-group-item list-group-item-action"><button type="submit"  hover:underline  style="background-color: rgb(63, 63, 209);"  class="btn btn-primary shadow px-5 py-2 text-white ">Above 500</button></a>
+     <a href="{% url 'Women' %}" class="list-group-item list-group-item-action" aria-current="true"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">All</button></a>
+     <a href="{% url 'Womendata' 'tshirt'  %}" class="list-group-item list-group-item-action"  aria-current="true"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">T-shirts</button></a>
+     <a href="{% url 'Womendata' 'hoodie'  %}" class="list-group-item list-group-item-action"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Hoodies</button></a>
+     <a href="{% url 'Womendata' 'below'  %}" class="list-group-item list-group-item-action"><button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Below 500</button></a>
+     <a href="{% url 'Womendata' 'above'  %}" class="list-group-item list-group-item-action"><button type="submit"  hover:underline  style="background-color: rgb(63, 63, 209);"  class="btn btn-primary shadow px-5 py-2 text-white ">Above 500</button></a>
    </div>
   </div>
   </div>
 
   <div class="col-sm-8">
    <div class="row">
-    {% for prod in merchandise %}
+    {% for prod in Women %}
                             
     <div class="col text-center mb-4 ">
-        <a href="#" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
-        <a href="{% url 'product-detail3' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
+        <a href="{% url 'product-detail6' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10">
         <div class="">
             
             <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80">
@@ -209,46 +206,6 @@
                         <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white ">Add to Cart</button>
                     </form>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <form id="wishlistForm_{{prod.id}}" action="/add-to-wishlist" class="d-inline">
-                            <input type="hidden" name="prod_id" value="{{prod.id}}" />
-                            {% if prod in wishlist %}
-                                <button type="button" onclick="addToWishlist('{{prod.id}}')" id="wishlistButton_{{prod.id}}" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 text-white">Add to Wishlist</button>
-                            {% else %}
-                                <button type="button" onclick="addToWishlist('{{prod.id}}')" id="wishlistButton_{{prod.id}}" style="background-color: black;" class="btn btn-primary shadow px-5 py-2 text-white">Add to Wishlist</button>
-                            {% endif %}
-                        </form>
-                    </div>
-                </div>
-                
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                <script>
-                    function addToWishlist(prodId) {
-                       
-                        var form = $('#wishlistForm_' + prodId);
-                        $.ajax({
-                            type: form.attr('method'),
-                            url: '/add-to-wishlist', 
-                            data: form.serialize(),
-                            success: function(response) {
-                                // Handle success (you can update the UI if needed)
-                                console.log('Product added to wishlist successfully.');
-                
-                                // Change the background color of the button
-                                var button = $('#wishlistButton_' + prodId);
-                                button.css('background-color', 'red');
-                            },
-                            error: function(error) {
-                                // Handle error
-                                console.error('Error adding product to wishlist:', error);
-                            }
-                        });
-                
-                       
-                        return false;
-                    }
-                </script>
                 <form action="/add-to-wishlist" class="d-inline">
                     <input type="hidden" name="prod_id" value="{{ prod.id }}" />
                     <button type="submit" style="background-color: red;" class="btn btn-primary shadow px-5 py-2 text-white">

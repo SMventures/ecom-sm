@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -107,11 +108,20 @@
                         <a href="#" class="dropbtn" onclick="toggleDropdown()">Products <i class="fa fa-caret-down"></i></a>
                         <div id="productsDropdown" class="dropdown-content">
                         
+<<<<<<< HEAD
                             <a href="{% url 'category' 'BK' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'category' 'AR' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
                             <a href="{% url 'category' 'MC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
                             <a href="{% url 'category' 'SI' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
                             <a href="{% url 'category' 'EC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+=======
+                            <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
+                            <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+>>>>>>> d458e511974c843a56c79757903c0c0559b39102
                         </div>
                     </li>
                     <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
@@ -139,6 +149,7 @@
                 </div>
                 
             </nav>
+<<<<<<< HEAD
          
 
             <html lang="en">
@@ -196,6 +207,46 @@
                 
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                 </body>
+=======
+            {% block main-content %}
+
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome<span class="text-capitilize">{{request.user}}</span></h3>
+    </div>
+</div>
+<div class="col-sm-8 offset-sm-1">
+    <form action="" method="post">
+        {% csrf_token%}
+        {% for fm in form %}
+               {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+            <br>
+            {% endfor %}
+            <div class="col-12 mt-3">
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-primary" style="background-color: blue; color: #fff;">Submit</button>
+                </div>
+                <a class="{% url 'address' %} type='button" class='btn btn-danger'>Back</a>
+            </div>
+            {% if form.non_field_error %}
+            {% for errors in form.non_field_error %}    
+              <p class="alert alert-danger my-3">{{error}}</p>
+            {% endfor %}
+        {% endif %}  
+        {% if messages %}
+        {% for msg in messages%}
+        <div class="alert alert-{{msg.tags}}" role="alert">
+            {{msg}}
+        </div>
+        {%endfor%}
+       {% endif %}
+        </form>
+
+
+ 
+
+{% endblock main-content %}
+
  <!----------------------------------footer--------------------------->
         <div class="flex items-end w-full min-h-screen bg-white">
 

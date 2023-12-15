@@ -110,6 +110,8 @@
                             <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
                             <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
                             <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
+                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Men</a>
+                            <a href="{% url 'Women' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Women</a>
                             <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
                             <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
                         </div>
@@ -165,6 +167,19 @@
                                             
                                         </div>
                                         
+                            <div class="col text-center mb-4">
+                                <a href="{% url 'product-detail' prod.id %}" class="btn bg-gray-100 hover:bg-gray-300 rounded-none px-8 pt-10 position-relative">
+                                    <div>
+                                        <!-- Wishlist Icon -->
+                                        <i class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition
+                                        fa-solid fa-heart"></i>
+                                        <img src="{{prod.product_image.url}}" width="300px" height="200px" class="object-contain h-64 w-80">
+                                        <!-- Product Details -->
+                                        <div class="fw-bold">{{prod.title}}</div>
+                                        <div class="fw-bold text-danger">Rs.{{prod.discounted_price}}/-
+                                            <small class="text-sm text-gray-400 line-through">{{prod.selling_price}}</small>
+                                        </div>
+                                        <!-- Add to Cart Button -->
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <form action="/add-to-cart" class="d-inline">
@@ -178,6 +193,14 @@
                                     </div>
 
                                 </div>
+                                                    <button type="submit" style="background-color: rgb(63, 63, 209);" class="btn btn-primary shadow px-5 py-2 text-white">Add to Cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            
                             {% endfor %}                                 
                         </div> 
                     </div>
