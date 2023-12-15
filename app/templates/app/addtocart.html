@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -107,11 +106,11 @@
                         <a href="#" class="dropbtn" onclick="toggleDropdown()">Products <i class="fa fa-caret-down"></i></a>
                         <div id="productsDropdown" class="dropdown-content">
                         
-                            <a href="{% url 'books' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
-                            <a href="{% url 'accessory' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
-                            <a href="{% url 'merchandise' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
-                            <a href="{% url 'stationary' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
-                            <a href="{% url 'electronics' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
+                            <a href="{% url 'category' 'BK' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Books</a>
+                            <a href="{% url 'category' 'AR' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accessories</a>
+                            <a href="{% url 'category' 'MC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Merchandise</a>
+                            <a href="{% url 'category' 'SI' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Stationery Items</a>
+                            <a href="{% url 'category' 'EC' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Electronics</a>
                         </div>
                     </li>
                     <li><a href="{% url 'about' %}" class=" hover:underline">About </a></li>
@@ -139,204 +138,243 @@
                 </div>
                 
             </nav>
-            {% block main_content %}
-      
-            <div class="container my-5">
-        
-                <div class="row">
-                   {% if cart %}
-                   <!-- <h1 class="text-center mb-5">Shopping Cart</h1> 
-                    -->
-                   <div class="col-sm-8">
-                   <div class="card">
-                       <div class="card-body">
-                           <u><b><h4 class="flex items-center justify-center mb-4 " style="font-size: 30px;">Shopping Cart</h4></b></u>
-                           <hr>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your E-commerce Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart-container {
+            display: flex;
+          
+            margin-left: 400px;
+        }
+
+        .cart-section {
+            width: 70%;
+            margin-right: 70px;
+        }
+
+        .total-section {
+            width: 30%;
+        }
+
+        /* Add more styling as needed */
+
+        /* Example styles for cart items */
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Example styles for total section */
+        .total {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .cart-section h1{
+            font-size: 72px
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cart-container">
+
+        <!-- Cart Section -->
+        <div class="cart-section">
+           <b> <h1>Cart</h1><b>
+
+            <!-- Example Cart Items -->
+            {% if cart %}
+            {% for item in cart %}
+            <div class="row">
+                <div class="col-sm-3 text-center align-self-center"> <img src="{{item.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="300" width="300"> </div>
+                <div class="col-sm-9">
+                    <div>
+                        <b><h5> {{item.product.title}} </h5></b>
+                        <div class="my-3">
+                            <b><label for="quantity"> Quantity: </label></b>
+                            <a  class="minus-cart btn" pid= {{item.product.id}} > <i class="fas fa-minus-square fa-lg"> </i> </a>
+                                <span id="quantity"> {{item.quantity}} </span>
+                            <a  class="plus-cart btn" pid= {{item.product.id}} > <i class="fas fa-plus-square fa-lg"> </i> </a>
+                        </div>    
+                        <div class="d-flex justify-content-between">
+                            <b class="mb-0"> <span> <strong>Rs. {{item.product.discounted_price}} </strong> </span> </b>
+                            <a href="#" class="remove-cart btn btn-sm btn-secondary hover:underline text-center text-white hover:text-primary transition relative mr-3 "  style="background-color: rgb(71, 71, 190); " pid= {{item.product.id}} > Remove item </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
            
-                           {% for item in cart %}
-                           <div class="row">
-                               <div class="col-sm-3 text-center align-self-center"> <img src="{{item.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
-                               <div class="col-sm-9">
-                                   <div>
-                                       <b><h5> {{item.product.title}} </h5></b>
-                                       <div class="my-3">
-                                           <b><label for="quantity"> Quantity: </label></b>
-                                           <a  class="minus-cart btn" pid= {{item.product.id}} > <i class="fas fa-minus-square fa-lg"> </i> </a>
-                                               <span id="quantity"> {{item.quantity}} </span>
-                                           <a  class="plus-cart btn" pid= {{item.product.id}} > <i class="fas fa-plus-square fa-lg"> </i> </a>
-                                       </div>    
-                                       <div class="d-flex justify-content-between">
-                                           <b class="mb-0"> <span> <strong>Rs. {{item.product.discounted_price}} </strong> </span> </b>
-                                           <a href="#" class="remove-cart btn btn-sm btn-secondary hover:underline text-center text-white hover:text-primary transition relative mr-3 "  style="background-color: rgb(71, 71, 190); " pid= {{item.product.id}} > Remove item </a>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <hr class="text muted">
-                           {% endfor %}
-                       </div>        
-                   </div>
-                   </div> 
-           
-                   <div class="col-sm-4">
-                       <div class="card">
-                           <div class="card-body">
-                               <u><b><h4 class="flex items-center justify-center mb-4 " style="font-size: 30px;">The total Amount of</h4></b></u>
-                               <center><b>
-                               <ul class="list-group">
-                                   <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"> Amount : <span id="amount">    Rs.{{amount}} </span> </li>
-                                   <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping :<span>  </span> </li>
-                                   <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                   <div>
-                                       <strong>Total :</strong> <small>(including GST)</small>
-                                   </div>
-                                       <span id="totalamount"> <strong>RS. {{totalamount}} </strong> </span>
-                                   </li>
-                               </ul>  
-                               <div class="d-grid"> <a href="{% url 'checkout' %}" class="btn btn-primary hover:underline text-center text-white hover:text-primary"  style="background-color: rgb(71, 71, 190); ">Place Order </a> </div>
-                           </div> </b></center>
-                       </div>
-                   </div>
-                   {% else %}
-                       <h1 class="text-center mb-5">Cart is empty</h1>
-                   {% endif %}
-                </div>
-               </div>
-            {% endblock main_content %} 
-   
-          <!----------------------------------footer--------------------------->
-        <div class="flex items-end w-full min-h-screen bg-white">
-
-            <footer class="w-full text-white bg-gray-800 body-font">
-                <div
-                    class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
-                    <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-                    
-                        <a class="flex items-center justify-center font-bold  text-white title-font md:justify-start font-caveat text-2xl">
-                            Digital Dalal Street
-                        </a>
-                        
-                        <p class="mt-2 text-sm text-white">Seamless Trading, Limitless Shopping.</p>
-                        <div class="mt-4">
-                            <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                                <a class="text-white cursor-pointer hover:text-gray-700>
-                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        class="w-5 h-5" viewBox="0 0 24 24">
-                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                    </svg>
-                                </a>
-                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                                    </svg>
-                                </a>
-                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="https://wa.me/8448640308?text=Hello">
-                                    <!-- WhatsApp Icon with increased size and margin -->
-                                    <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
-                                </a>
-                                
-                                
-                                
-                                <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">
-                                    <!-- Gmail Icon with increased size -->
-                                    <i class="far fa-envelope fa-lg"></i>
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                        
-                    </div>
-                    <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
-
-                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
-                        
-                            <ul class="list-none">
-                                <li class="mt-3">
-                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Company</a>
-                                </li>
-                                <li class="mt-3">
-                                    <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Products</a>
-                                </li>
-                                <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                       
-                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                            <h2 class="mb-3 text-sm text-white font-medium tracking-widest font-bold uppercase title-font">Support</h2>
-
-                            </h2>
-                            <ul class="list-none">
-                                <li class="mt-3">
-                                    <a href="{% url 'terms' %}" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
-                                </li>
-                                <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
-                                </li>
-                                
-                                <li class="mt-3">
-                                    <a href= "{% url 'FAQs' %}" class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
-                                </li>
-                                
-                            </ul>
-                        </div>
-                        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                          <section id="contactUsSection">
-                            <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
-                         
-                            <ul class="list-none">
-                                <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
-                                </li>
-                                <li class="mt-3">
-                                    <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
-                                </li>
-                                <li class="mt-3">
-                                    <a class="text-white cursor-pointer hover:text-gray-700">Call us
-                                    </a>
-                                </li>
-                            </ul>
-                               
-                         </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-blue-800">
-                    <div class="container px-5 py-4 mx-auto">
-                        <p class="text-sm text-white capitalize xl:text-center">© 2023 All rights reserved </p>
-                    </div>
-                </div>
-            </footer>
-        
+            <hr class="text muted">
+            {% endfor %}
         </div>
-        <!-------------------------------------js for toggle menu-------------------------------------->
-
-        <script>
-            const userIcon = document.getElementById('userIcon');
-            const dropdown = document.getElementById('dropdown');
         
-            userIcon.addEventListener('click', () => {
-                dropdown.classList.toggle('hidden');
-            });
+        <div class="col-sm-4">
+            <div class="card">
+             <div class="card-body">
+               <h3>The Total Amount of</h3>
+               <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount<span>Rs. 430.00</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping<span>Rs. 70.00</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                 <div>
+                    <strong>Total</strong> <small>(including VAT)</small>
+                  </div>
+                  <span><strong>Rs. 500.00</strong></span>
+                </li>
+               </ul>
+               <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Place Order</a></div>
+             </div>
+            </div>
+           </div>
+           <div class="container">
+            <div class="row">
+             <div class="col-sm-8">
+              <div class="card">
+               <div class="card-body">
+                 <h5 class="mb-4">We accept</h5>
+                 <img src="{% static 'app/images/payment.png' %}" alt="" class="img-fluid">
+               </div>
+             </div>
+             </div>
+            </div>
+           
+          </div>
+         </div>
         
-            document.addEventListener('click', (event) => {
-                if (!userIcon.contains(event.target) && !dropdown.contains(event.target)) {
-                    dropdown.classList.add('hidden');
-                }
-            });
-        </script>
-     
-    </body>
-    <script script="../..static/app/js/owl.carousel.min.js %"></script>
-    <script script="../..static/app/js/all.min.js"></script>
-    <script src="../../static/app/js/Data.js %"></script>
-    <script src="../../static/app/js/main.js"></script> 
-    <script src="{% static 'app/js/myscript.js' %}"></script>
-
+                 {% else %}
+                     <h1 class="text-center mb-5">Cart is empty</h1>
+                 {% endif %}
+              </div>
+             </div>   
+            </div>
+            </div>
+           </div>
+           
+          </div>
+         </div>
 </html>
+
+            <div class="flex items-end w-full min-h-screen bg-white">
+
+                <footer class="w-full text-white bg-gray-800 body-font">
+                    <div
+                        class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+                        <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+                        
+                            <a class="flex items-center justify-center font-bold  text-white title-font md:justify-start font-caveat text-2xl">
+                                Digital Dalal Street
+                            </a>
+                            
+                            <p class="mt-2 text-sm text-white">Seamless Trading, Limitless Shopping.</p>
+                            <div class="mt-4">
+                                <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+                                    <a class="text-white cursor-pointer hover:text-gray-700>
+                                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            class="w-5 h-5" viewBox="0 0 24 24">
+                                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="ml-3 text-white cursor-pointer hover:text-gray-700">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="https://wa.me/8448640308?text=Hello">
+                                        <!-- WhatsApp Icon with increased size and margin -->
+                                        <i class="fab fa-whatsapp fa-lg" style="margin-left: 5px;"></i>
+                                    </a>
+                                    
+                                    
+                                    
+                                    <a class="ml-3 text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">
+                                        <!-- Gmail Icon with increased size -->
+                                        <i class="far fa-envelope fa-lg"></i>
+                                    </a>
+                                    
+                                    
+                                </span>
+                            </div>
+                            
+                        </div>
+                        <div class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-60 md:mt-0 md:text-left">
+    
+                            <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                                <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">About us</h2>
+                            
+                                <ul class="list-none">
+                                    <li class="mt-3">
+                                        <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Company</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a href= "{% url 'about' %}" class="text-white cursor-pointer hover:text-gray-700">Products</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a class="text-white cursor-pointer hover:text-gray-700">Team</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                           
+                            <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                                <h2 class="mb-3 text-sm text-white font-medium tracking-widest font-bold uppercase title-font">Support</h2>
+    
+                                </h2>
+                                <ul class="list-none">
+                                    <li class="mt-3">
+                                        <a href="{% url 'terms' %}" class="text-white cursor-pointer hover:text-gray-700">Terms &amp; Privacy</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a class="text-white cursor-pointer hover:text-gray-700">Pricing</a>
+                                    </li>
+                                    
+                                    <li class="mt-3">
+                                        <a href= "{% url 'FAQs' %}" class="text-white cursor-pointer hover:text-gray-700">FAQ</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+                              <section id="contactUsSection">
+                                <h2 class="mb-3 text-sm font-medium tracking-widest font-bold uppercase title-font">Contact us</h2>
+                             
+                                <ul class="list-none">
+                                    <li class="mt-3">
+                                        <a class="text-white cursor-pointer hover:text-gray-700">Send a Message</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a  class="text-white cursor-pointer hover:text-gray-700" href="mailto:suyash.sharma@smventures.co.in">Email us</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a class="text-white cursor-pointer hover:text-gray-700">Call us
+                                        </a>
+                                    </li>
+                                </ul>
+                                   
+                             </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-800">
+                        <div class="container px-5 py-4 mx-auto">
+                            <p class="text-sm text-white capitalize xl:text-center">© 2023 All rights reserved </p>
+                        </div>
+                    </div>
+                </footer>
+            
+            </div>

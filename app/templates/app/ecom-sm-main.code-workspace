@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../ecom-sm-main (2)/ecom-sm-main"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}
